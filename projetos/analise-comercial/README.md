@@ -6,6 +6,24 @@ O tratamento em Python e as consultas SQL são executáveis. A visualização ab
 
 ![Receita líquida por loja em dados sintéticos](resultados/visao-geral.svg)
 
+## Resultados da execução de demonstração
+
+Sem filtros, os CSVs tratados produzem os seguintes valores:
+
+| Indicador | Resultado |
+| --- | ---: |
+| Pedidos válidos | 1.129 |
+| Receita líquida | R$ 450.903,00 |
+| Lucro bruto | R$ 179.268,00 |
+| Margem bruta ponderada | 39,76% |
+| Ticket médio | R$ 399,38 |
+
+A Loja 04 tem a maior receita do exemplo, R$ 60.297,55, seguida pela Loja 02, com R$ 60.201,65. A diferença de R$ 95,90 é pequena: o ranking, sozinho, não sustenta uma decisão de investimento. Uma investigação comercial precisaria considerar mix de produtos, margem, metas e capacidade de cada loja.
+
+Das 1.217 linhas brutas, 88 ficam fora da análise: 70 cancelamentos, 10 cópias idênticas, 2 registros de um mesmo ID conflitante e 6 outras inconsistências. Separar esses motivos evita interpretar toda exclusão como falha da fonte.
+
+Os números foram recalculados a partir dos CSVs publicados e conciliados com os resumos. Consulte o [roteiro de validação no Power BI](../../docs/validacao-power-bi.md) para comparar também seleções de mês e loja. A [documentação dos modelos](../../docs/modelos-de-dados.md) mostra as chaves e os relacionamentos previstos.
+
 ## Perguntas de negócio
 
 1. Como a receita líquida varia entre lojas e meses?

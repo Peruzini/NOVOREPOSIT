@@ -21,6 +21,12 @@ Ticket Medio = DIVIDE([Receita Liquida], [Pedidos])
 
 Receita Mes Anterior = CALCULATE([Receita Liquida], DATEADD(DimCalendario[Data], -1, MONTH))
 
+// Sem dados atuais ou anteriores, a comparacao fica em branco.
 Variacao Receita Mensal =
+VAR Atual = [Receita Liquida]
 VAR Anterior = [Receita Mes Anterior]
-RETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Liquida] - Anterior, Anterior))
+RETURN
+    IF(
+        NOT ISBLANK(Atual) && NOT ISBLANK(Anterior),
+        DIVIDE(Atual - Anterior, Anterior)
+    )

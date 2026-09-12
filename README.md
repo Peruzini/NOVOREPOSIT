@@ -11,6 +11,15 @@ Estudos demonstrativos de Rafael Peruzini sobre indicadores, qualidade de dados 
 
 **Estado das entregas:** a geração dos dados, o tratamento e as consultas SQL são executáveis. Os arquivos de Power Query, DAX, tema e roteiros apoiam a montagem dos dashboards. Este repositório ainda não inclui arquivos `.pbix` nem capturas de um relatório executado no Power BI Desktop.
 
+## Leitura orientada
+
+Comece pelos resultados e pelas perguntas do estudo que mais se aproxima do problema de negócio. Para examinar as decisões e completar a entrega:
+
+- [Modelos de dados e relacionamentos](docs/modelos-de-dados.md)
+- [Valores esperados para validar o Power BI](docs/validacao-power-bi.md)
+- [Roteiro de apresentação de um estudo](docs/roteiro-de-apresentacao.md)
+- [Passos para finalizar o Power BI](docs/como-publicar-power-bi.md)
+
 ## Executar os estudos
 
 Requisito: Python 3.10 ou superior. O processamento usa apenas a biblioteca padrão do Python; não é necessário instalar pacotes.

@@ -6,6 +6,27 @@ Python e SQL produzem os dados tratados e os resultados. A imagem abaixo é uma 
 
 ![Demandas abertas em atraso por equipe em dados sintéticos](resultados/visao-geral.svg)
 
+## Resultados da execução de demonstração
+
+Fotografia sintética de 31/12/2025, sem filtros:
+
+| Indicador | Resultado |
+| --- | ---: |
+| Demandas válidas | 180 |
+| Concluídas | 102 |
+| Backlog aberto | 78 |
+| Em andamento | 42 |
+| Abertas em atraso | 68 |
+| Concluídas no prazo | 64 |
+| Taxa de entregas no prazo | 62,75% |
+| Tempo médio de ciclo | 17,85 dias corridos |
+
+As 68 demandas vencidas representam 87,18% do backlog aberto. No exemplo, Automação concentra 21 dessas demandas e Engenharia de Dados concentra 20. Uma proposta de investigação seria examinar os bloqueios, a prioridade e a idade dessas demandas antes de distribuir novas atividades.
+
+Isso não demonstra que uma equipe seja menos produtiva: o conjunto não controla complexidade e capacidade. O percentual de entregas no prazo usa as 102 concluídas como denominador; o percentual de backlog vencido usa as 78 abertas.
+
+Os números foram recalculados a partir dos CSVs publicados e conciliados com os resumos. Consulte o [roteiro de validação no Power BI](../../docs/validacao-power-bi.md) e a [documentação dos modelos](../../docs/modelos-de-dados.md).
+
 ## Perguntas de negócio
 
 1. Quantas demandas estão concluídas, em andamento e a fazer?
