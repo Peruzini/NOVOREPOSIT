@@ -1,0 +1,669 @@
+[
+  [
+    {
+      "linhas_validas": 180,
+      "concluidas": 102,
+      "backlog": 78,
+      "em_atraso": 68
+    }
+  ],
+  [
+    {
+      "Equipe": "Automação",
+      "demandas": 47,
+      "concluidas": 25,
+      "abertas_em_atraso": 21,
+      "ciclo_medio_dias_corridos": 18.68,
+      "entregas_no_prazo_pct": 64.0
+    },
+    {
+      "Equipe": "Engenharia de Dados",
+      "demandas": 46,
+      "concluidas": 24,
+      "abertas_em_atraso": 20,
+      "ciclo_medio_dias_corridos": 15.79,
+      "entregas_no_prazo_pct": 70.83
+    },
+    {
+      "Equipe": "BI",
+      "demandas": 42,
+      "concluidas": 26,
+      "abertas_em_atraso": 14,
+      "ciclo_medio_dias_corridos": 18.42,
+      "entregas_no_prazo_pct": 53.85
+    },
+    {
+      "Equipe": "Processos",
+      "demandas": 45,
+      "concluidas": 27,
+      "abertas_em_atraso": 13,
+      "ciclo_medio_dias_corridos": 18.37,
+      "entregas_no_prazo_pct": 62.96
+    }
+  ],
+  [
+    {
+      "mes_entrega": "2025-01",
+      "concluidas": 2,
+      "ciclo_medio_dias_corridos": 6.0
+    },
+    {
+      "mes_entrega": "2025-02",
+      "concluidas": 7,
+      "ciclo_medio_dias_corridos": 12.71
+    },
+    {
+      "mes_entrega": "2025-03",
+      "concluidas": 5,
+      "ciclo_medio_dias_corridos": 22.4
+    },
+    {
+      "mes_entrega": "2025-04",
+      "concluidas": 7,
+      "ciclo_medio_dias_corridos": 25.57
+    },
+    {
+      "mes_entrega": "2025-05",
+      "concluidas": 17,
+      "ciclo_medio_dias_corridos": 19.76
+    },
+    {
+      "mes_entrega": "2025-06",
+      "concluidas": 6,
+      "ciclo_medio_dias_corridos": 10.5
+    },
+    {
+      "mes_entrega": "2025-07",
+      "concluidas": 7,
+      "ciclo_medio_dias_corridos": 18.29
+    },
+    {
+      "mes_entrega": "2025-08",
+      "concluidas": 10,
+      "ciclo_medio_dias_corridos": 20.7
+    },
+    {
+      "mes_entrega": "2025-09",
+      "concluidas": 7,
+      "ciclo_medio_dias_corridos": 17.57
+    },
+    {
+      "mes_entrega": "2025-10",
+      "concluidas": 6,
+      "ciclo_medio_dias_corridos": 16.67
+    },
+    {
+      "mes_entrega": "2025-11",
+      "concluidas": 14,
+      "ciclo_medio_dias_corridos": 14.71
+    },
+    {
+      "mes_entrega": "2025-12",
+      "concluidas": 14,
+      "ciclo_medio_dias_corridos": 19.0
+    }
+  ],
+  [
+    {
+      "Status": "A fazer",
+      "demandas": 36,
+      "horas_planejadas": 1175
+    },
+    {
+      "Status": "Concluida",
+      "demandas": 102,
+      "horas_planejadas": 3194
+    },
+    {
+      "Status": "Em andamento",
+      "demandas": 42,
+      "horas_planejadas": 1356
+    }
+  ],
+  [
+    {
+      "DemandaID": "DEM0124",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-01-21",
+      "dias_atraso": 344
+    },
+    {
+      "DemandaID": "DEM0089",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-02-12",
+      "dias_atraso": 322
+    },
+    {
+      "DemandaID": "DEM0033",
+      "EquipeID": "E02",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-02-15",
+      "dias_atraso": 319
+    },
+    {
+      "DemandaID": "DEM0098",
+      "EquipeID": "E04",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-03-05",
+      "dias_atraso": 301
+    },
+    {
+      "DemandaID": "DEM0034",
+      "EquipeID": "E01",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-03-06",
+      "dias_atraso": 300
+    },
+    {
+      "DemandaID": "DEM0169",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-03-07",
+      "dias_atraso": 299
+    },
+    {
+      "DemandaID": "DEM0028",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-03-20",
+      "dias_atraso": 286
+    },
+    {
+      "DemandaID": "DEM0019",
+      "EquipeID": "E02",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-03-21",
+      "dias_atraso": 285
+    },
+    {
+      "DemandaID": "DEM0023",
+      "EquipeID": "E03",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-03-24",
+      "dias_atraso": 282
+    },
+    {
+      "DemandaID": "DEM0123",
+      "EquipeID": "E02",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-04-03",
+      "dias_atraso": 272
+    },
+    {
+      "DemandaID": "DEM0013",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-04-10",
+      "dias_atraso": 265
+    },
+    {
+      "DemandaID": "DEM0053",
+      "EquipeID": "E01",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-04-17",
+      "dias_atraso": 258
+    },
+    {
+      "DemandaID": "DEM0018",
+      "EquipeID": "E02",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-04-20",
+      "dias_atraso": 255
+    },
+    {
+      "DemandaID": "DEM0059",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-04-27",
+      "dias_atraso": 248
+    },
+    {
+      "DemandaID": "DEM0174",
+      "EquipeID": "E01",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-05-06",
+      "dias_atraso": 239
+    },
+    {
+      "DemandaID": "DEM0143",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-05-17",
+      "dias_atraso": 228
+    },
+    {
+      "DemandaID": "DEM0139",
+      "EquipeID": "E02",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-05-19",
+      "dias_atraso": 226
+    },
+    {
+      "DemandaID": "DEM0164",
+      "EquipeID": "E04",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-05-20",
+      "dias_atraso": 225
+    },
+    {
+      "DemandaID": "DEM0114",
+      "EquipeID": "E03",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-05-26",
+      "dias_atraso": 219
+    },
+    {
+      "DemandaID": "DEM0048",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-05-27",
+      "dias_atraso": 218
+    },
+    {
+      "DemandaID": "DEM0008",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-05-29",
+      "dias_atraso": 216
+    },
+    {
+      "DemandaID": "DEM0154",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-06-04",
+      "dias_atraso": 210
+    },
+    {
+      "DemandaID": "DEM0173",
+      "EquipeID": "E03",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-06-11",
+      "dias_atraso": 203
+    },
+    {
+      "DemandaID": "DEM0138",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-06-17",
+      "dias_atraso": 197
+    },
+    {
+      "DemandaID": "DEM0179",
+      "EquipeID": "E03",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-06-25",
+      "dias_atraso": 189
+    },
+    {
+      "DemandaID": "DEM0178",
+      "EquipeID": "E04",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-07-08",
+      "dias_atraso": 176
+    },
+    {
+      "DemandaID": "DEM0099",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-07-15",
+      "dias_atraso": 169
+    },
+    {
+      "DemandaID": "DEM0093",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-07-16",
+      "dias_atraso": 168
+    },
+    {
+      "DemandaID": "DEM0084",
+      "EquipeID": "E02",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-07-17",
+      "dias_atraso": 167
+    },
+    {
+      "DemandaID": "DEM0108",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-07-17",
+      "dias_atraso": 167
+    },
+    {
+      "DemandaID": "DEM0133",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-07-26",
+      "dias_atraso": 158
+    },
+    {
+      "DemandaID": "DEM0039",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-07-31",
+      "dias_atraso": 153
+    },
+    {
+      "DemandaID": "DEM0064",
+      "EquipeID": "E02",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-08-06",
+      "dias_atraso": 147
+    },
+    {
+      "DemandaID": "DEM0074",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-08-13",
+      "dias_atraso": 140
+    },
+    {
+      "DemandaID": "DEM0038",
+      "EquipeID": "E01",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-08-14",
+      "dias_atraso": 139
+    },
+    {
+      "DemandaID": "DEM0168",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-08-14",
+      "dias_atraso": 139
+    },
+    {
+      "DemandaID": "DEM0024",
+      "EquipeID": "E02",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-08-15",
+      "dias_atraso": 138
+    },
+    {
+      "DemandaID": "DEM0134",
+      "EquipeID": "E01",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-08-15",
+      "dias_atraso": 138
+    },
+    {
+      "DemandaID": "DEM0119",
+      "EquipeID": "E01",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-08-17",
+      "dias_atraso": 136
+    },
+    {
+      "DemandaID": "DEM0004",
+      "EquipeID": "E02",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-08-19",
+      "dias_atraso": 134
+    },
+    {
+      "DemandaID": "DEM0069",
+      "EquipeID": "E01",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-09-11",
+      "dias_atraso": 111
+    },
+    {
+      "DemandaID": "DEM0118",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-09-15",
+      "dias_atraso": 107
+    },
+    {
+      "DemandaID": "DEM0003",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-09-17",
+      "dias_atraso": 105
+    },
+    {
+      "DemandaID": "DEM0054",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-09-19",
+      "dias_atraso": 103
+    },
+    {
+      "DemandaID": "DEM0163",
+      "EquipeID": "E04",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-09-19",
+      "dias_atraso": 103
+    },
+    {
+      "DemandaID": "DEM0058",
+      "EquipeID": "E01",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-09-21",
+      "dias_atraso": 101
+    },
+    {
+      "DemandaID": "DEM0094",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-09-21",
+      "dias_atraso": 101
+    },
+    {
+      "DemandaID": "DEM0068",
+      "EquipeID": "E01",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-09-23",
+      "dias_atraso": 99
+    },
+    {
+      "DemandaID": "DEM0104",
+      "EquipeID": "E01",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-09-28",
+      "dias_atraso": 94
+    },
+    {
+      "DemandaID": "DEM0153",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-10-07",
+      "dias_atraso": 85
+    },
+    {
+      "DemandaID": "DEM0103",
+      "EquipeID": "E01",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-10-14",
+      "dias_atraso": 78
+    },
+    {
+      "DemandaID": "DEM0009",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-10-15",
+      "dias_atraso": 77
+    },
+    {
+      "DemandaID": "DEM0044",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-10-21",
+      "dias_atraso": 71
+    },
+    {
+      "DemandaID": "DEM0158",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-10-26",
+      "dias_atraso": 66
+    },
+    {
+      "DemandaID": "DEM0049",
+      "EquipeID": "E03",
+      "Prioridade": "Alta",
+      "Status": "A fazer",
+      "DataPrazo": "2025-11-11",
+      "dias_atraso": 50
+    },
+    {
+      "DemandaID": "DEM0128",
+      "EquipeID": "E02",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-11-12",
+      "dias_atraso": 49
+    },
+    {
+      "DemandaID": "DEM0043",
+      "EquipeID": "E02",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-11-14",
+      "dias_atraso": 47
+    },
+    {
+      "DemandaID": "DEM0144",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-11-16",
+      "dias_atraso": 45
+    },
+    {
+      "DemandaID": "DEM0148",
+      "EquipeID": "E02",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-11-16",
+      "dias_atraso": 45
+    },
+    {
+      "DemandaID": "DEM0079",
+      "EquipeID": "E01",
+      "Prioridade": "Media",
+      "Status": "A fazer",
+      "DataPrazo": "2025-11-20",
+      "dias_atraso": 41
+    },
+    {
+      "DemandaID": "DEM0063",
+      "EquipeID": "E03",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-11-21",
+      "dias_atraso": 40
+    },
+    {
+      "DemandaID": "DEM0078",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-11-21",
+      "dias_atraso": 40
+    },
+    {
+      "DemandaID": "DEM0088",
+      "EquipeID": "E01",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-11-30",
+      "dias_atraso": 31
+    },
+    {
+      "DemandaID": "DEM0113",
+      "EquipeID": "E03",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-12-12",
+      "dias_atraso": 19
+    },
+    {
+      "DemandaID": "DEM0159",
+      "EquipeID": "E01",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-12-18",
+      "dias_atraso": 13
+    },
+    {
+      "DemandaID": "DEM0180",
+      "EquipeID": "E03",
+      "Prioridade": "Media",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-12-18",
+      "dias_atraso": 13
+    },
+    {
+      "DemandaID": "DEM0014",
+      "EquipeID": "E04",
+      "Prioridade": "Baixa",
+      "Status": "A fazer",
+      "DataPrazo": "2025-12-26",
+      "dias_atraso": 5
+    },
+    {
+      "DemandaID": "DEM0092",
+      "EquipeID": "E04",
+      "Prioridade": "Alta",
+      "Status": "Em andamento",
+      "DataPrazo": "2025-12-28",
+      "dias_atraso": 3
+    }
+  ]
+]

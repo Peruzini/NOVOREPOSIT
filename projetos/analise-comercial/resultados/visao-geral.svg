@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="554" viewBox="0 0 960 554">
+<rect width="960" height="554" fill="#F8FAFC"/>
+<g font-family="Arial, sans-serif" fill="#0F172A">
+<text x="32" y="46" font-size="25" font-weight="bold">Receita líquida por loja</text>
+<text x="32" y="76" font-size="15" fill="#475569">Estudo de portfólio • Dados sintéticos • Referência 2025</text>
+<text x="32" y="130" font-size="16">Loja 04 - MG</text>
+<rect x="255" y="108" width="470.0" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="130" text-anchor="end" font-size="16">R$ 60.297,55</text>
+<text x="32" y="178" font-size="16">Loja 02 - RJ</text>
+<rect x="255" y="156" width="469.25" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="178" text-anchor="end" font-size="16">R$ 60.201,65</text>
+<text x="32" y="226" font-size="16">Loja 06 - SP</text>
+<rect x="255" y="204" width="463.78" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="226" text-anchor="end" font-size="16">R$ 59.499,50</text>
+<text x="32" y="274" font-size="16">Loja 05 - RJ</text>
+<rect x="255" y="252" width="441.18" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="274" text-anchor="end" font-size="16">R$ 56.600,70</text>
+<text x="32" y="322" font-size="16">Loja 08 - RJ</text>
+<rect x="255" y="300" width="439.56" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="322" text-anchor="end" font-size="16">R$ 56.391,90</text>
+<text x="32" y="370" font-size="16">Loja 03 - SP</text>
+<rect x="255" y="348" width="420.1" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="370" text-anchor="end" font-size="16">R$ 53.896,10</text>
+<text x="32" y="418" font-size="16">Loja 01 - MG</text>
+<rect x="255" y="396" width="414.75" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="418" text-anchor="end" font-size="16">R$ 53.209,40</text>
+<text x="32" y="466" font-size="16">Loja 07 - MG</text>
+<rect x="255" y="444" width="396.02" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="466" text-anchor="end" font-size="16">R$ 50.806,20</text>
+<text x="32" y="526" font-size="13" fill="#475569">Visualização estática gerada pelo Python. O relatório Power BI é uma entrega separada.</text>
+</g></svg>

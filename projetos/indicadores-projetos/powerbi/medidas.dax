@@ -1,0 +1,26 @@
+// Crie cada medida separadamente no Power BI Desktop.
+// DimCalendario[Data] -> FatoDemandas[DataCriacao]: relacionamento ativo.
+// DimCalendario[Data] -> FatoDemandas[DataConclusao]: relacionamento inativo.
+
+Demandas = DISTINCTCOUNT(FatoDemandas[DemandaID])
+
+Concluidas = CALCULATE([Demandas], KEEPFILTERS(FatoDemandas[Status] = "Concluida"))
+
+Backlog Aberto = CALCULATE([Demandas], KEEPFILTERS(FatoDemandas[Status] <> "Concluida"))
+
+Em Andamento = CALCULATE([Demandas], KEEPFILTERS(FatoDemandas[Status] = "Em andamento"))
+
+Abertas em Atraso = SUM(FatoDemandas[EmAtraso])
+
+Entregas no Prazo = SUM(FatoDemandas[EntregueNoPrazo])
+
+Taxa de Entregas no Prazo = DIVIDE([Entregas no Prazo], [Concluidas])
+
+Tempo Medio de Ciclo = AVERAGE(FatoDemandas[TempoCicloDias])
+
+Lead Time Medio = AVERAGE(FatoDemandas[LeadTimeDias])
+
+Data de Referencia = MAX(FatoDemandas[DataReferencia])
+
+Concluidas por Data de Entrega =
+CALCULATE([Concluidas], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))

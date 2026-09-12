@@ -1,0 +1,17 @@
+{
+  "linhas_validas": 180,
+  "concluidas": 102,
+  "backlog": 78,
+  "em_atraso": 68,
+  "origem": "dados totalmente sinteticos",
+  "semente": 2413,
+  "data_referencia": "2025-12-31",
+  "linhas_brutas": 188,
+  "linhas_excluidas": 8,
+  "exclusoes_por_motivo": {
+    "duplicata_identica": 5,
+    "equipe_invalida": 1,
+    "conclusao_sem_datas": 1,
+    "data_invalida": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "linhas_validas": 1129,
+  "receita_liquida_centavos": 45090300,
+  "lucro_bruto_centavos": 17926800,
+  "origem": "dados totalmente sinteticos",
+  "semente": 2412,
+  "data_referencia": "2025-12-31",
+  "linhas_brutas": 1217,
+  "linhas_excluidas": 88,
+  "exclusoes_por_motivo": {
+    "venda_cancelada": 70,
+    "id_conflitante": 2,
+    "duplicata_identica": 10,
+    "chave_LojaID_invalida": 1,
+    "quantidade_invalida": 1,
+    "data_invalida": 1,
+    "desconto_invalido": 1,
+    "chave_ProdutoID_invalida": 1,
+    "valor_negativo": 1
+  }
+}

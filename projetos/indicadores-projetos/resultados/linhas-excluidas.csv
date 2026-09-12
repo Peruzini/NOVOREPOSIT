@@ -1,0 +1,9 @@
+LinhaOrigem,ID,Motivo
+182,DEM0001,duplicata_identica
+183,DEM0002,duplicata_identica
+184,DEM0003,duplicata_identica
+185,DEM0004,duplicata_identica
+186,DEM0005,duplicata_identica
+187,ERRO001,equipe_invalida
+188,ERRO002,conclusao_sem_datas
+189,ERRO003,data_invalida

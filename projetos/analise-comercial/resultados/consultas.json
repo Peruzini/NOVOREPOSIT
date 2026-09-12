@@ -1,0 +1,251 @@
+[
+  [
+    {
+      "linhas_validas": 1129,
+      "receita_liquida_centavos": 45090300,
+      "lucro_bruto_centavos": 17926800
+    }
+  ],
+  [
+    {
+      "Loja": "Loja 04",
+      "UF": "MG",
+      "vendas": 143,
+      "receita_liquida_reais": 60297.55,
+      "lucro_bruto_reais": 24223.05,
+      "margem_pct": 40.17
+    },
+    {
+      "Loja": "Loja 02",
+      "UF": "RJ",
+      "vendas": 153,
+      "receita_liquida_reais": 60201.65,
+      "lucro_bruto_reais": 23920.65,
+      "margem_pct": 39.73
+    },
+    {
+      "Loja": "Loja 06",
+      "UF": "SP",
+      "vendas": 140,
+      "receita_liquida_reais": 59499.5,
+      "lucro_bruto_reais": 23754.0,
+      "margem_pct": 39.92
+    },
+    {
+      "Loja": "Loja 05",
+      "UF": "RJ",
+      "vendas": 144,
+      "receita_liquida_reais": 56600.7,
+      "lucro_bruto_reais": 22528.2,
+      "margem_pct": 39.8
+    },
+    {
+      "Loja": "Loja 08",
+      "UF": "RJ",
+      "vendas": 145,
+      "receita_liquida_reais": 56391.9,
+      "lucro_bruto_reais": 22284.4,
+      "margem_pct": 39.52
+    },
+    {
+      "Loja": "Loja 03",
+      "UF": "SP",
+      "vendas": 130,
+      "receita_liquida_reais": 53896.1,
+      "lucro_bruto_reais": 21363.6,
+      "margem_pct": 39.64
+    },
+    {
+      "Loja": "Loja 01",
+      "UF": "MG",
+      "vendas": 133,
+      "receita_liquida_reais": 53209.4,
+      "lucro_bruto_reais": 21184.4,
+      "margem_pct": 39.81
+    },
+    {
+      "Loja": "Loja 07",
+      "UF": "MG",
+      "vendas": 141,
+      "receita_liquida_reais": 50806.2,
+      "lucro_bruto_reais": 20009.7,
+      "margem_pct": 39.38
+    }
+  ],
+  [
+    {
+      "AnoMes": "2025-01",
+      "pedidos": 89,
+      "receita_liquida_reais": 38839.9,
+      "ticket_medio_reais": 436.4
+    },
+    {
+      "AnoMes": "2025-02",
+      "pedidos": 87,
+      "receita_liquida_reais": 34777.95,
+      "ticket_medio_reais": 399.75
+    },
+    {
+      "AnoMes": "2025-03",
+      "pedidos": 100,
+      "receita_liquida_reais": 37198.9,
+      "ticket_medio_reais": 371.99
+    },
+    {
+      "AnoMes": "2025-04",
+      "pedidos": 87,
+      "receita_liquida_reais": 38650.45,
+      "ticket_medio_reais": 444.26
+    },
+    {
+      "AnoMes": "2025-05",
+      "pedidos": 95,
+      "receita_liquida_reais": 33754.0,
+      "ticket_medio_reais": 355.31
+    },
+    {
+      "AnoMes": "2025-06",
+      "pedidos": 86,
+      "receita_liquida_reais": 34414.7,
+      "ticket_medio_reais": 400.17
+    },
+    {
+      "AnoMes": "2025-07",
+      "pedidos": 108,
+      "receita_liquida_reais": 39464.9,
+      "ticket_medio_reais": 365.42
+    },
+    {
+      "AnoMes": "2025-08",
+      "pedidos": 89,
+      "receita_liquida_reais": 35757.2,
+      "ticket_medio_reais": 401.77
+    },
+    {
+      "AnoMes": "2025-09",
+      "pedidos": 95,
+      "receita_liquida_reais": 37177.1,
+      "ticket_medio_reais": 391.34
+    },
+    {
+      "AnoMes": "2025-10",
+      "pedidos": 99,
+      "receita_liquida_reais": 41998.15,
+      "ticket_medio_reais": 424.22
+    },
+    {
+      "AnoMes": "2025-11",
+      "pedidos": 110,
+      "receita_liquida_reais": 43717.1,
+      "ticket_medio_reais": 397.43
+    },
+    {
+      "AnoMes": "2025-12",
+      "pedidos": 84,
+      "receita_liquida_reais": 35152.65,
+      "ticket_medio_reais": 418.48
+    }
+  ],
+  [
+    {
+      "Categoria": "Tecnologia",
+      "unidades": 1191,
+      "receita_liquida_reais": 158649.3,
+      "margem_pct": 39.55
+    },
+    {
+      "Categoria": "Esporte",
+      "unidades": 996,
+      "receita_liquida_reais": 153861.4,
+      "margem_pct": 39.65
+    },
+    {
+      "Categoria": "Casa",
+      "unidades": 1164,
+      "receita_liquida_reais": 138392.3,
+      "margem_pct": 40.11
+    }
+  ],
+  [
+    {
+      "Vendedor": "Vendedor 07",
+      "pedidos": 77,
+      "receita_liquida_reais": 34843.0
+    },
+    {
+      "Vendedor": "Vendedor 03",
+      "pedidos": 82,
+      "receita_liquida_reais": 33535.0
+    },
+    {
+      "Vendedor": "Vendedor 10",
+      "pedidos": 81,
+      "receita_liquida_reais": 31359.8
+    },
+    {
+      "Vendedor": "Vendedor 11",
+      "pedidos": 69,
+      "receita_liquida_reais": 29957.05
+    },
+    {
+      "Vendedor": "Vendedor 02",
+      "pedidos": 67,
+      "receita_liquida_reais": 29924.95
+    },
+    {
+      "Vendedor": "Vendedor 15",
+      "pedidos": 75,
+      "receita_liquida_reais": 29588.7
+    },
+    {
+      "Vendedor": "Vendedor 12",
+      "pedidos": 71,
+      "receita_liquida_reais": 29542.45
+    },
+    {
+      "Vendedor": "Vendedor 05",
+      "pedidos": 67,
+      "receita_liquida_reais": 29138.45
+    },
+    {
+      "Vendedor": "Vendedor 16",
+      "pedidos": 70,
+      "receita_liquida_reais": 26803.2
+    },
+    {
+      "Vendedor": "Vendedor 04",
+      "pedidos": 71,
+      "receita_liquida_reais": 26666.65
+    },
+    {
+      "Vendedor": "Vendedor 13",
+      "pedidos": 73,
+      "receita_liquida_reais": 26516.6
+    },
+    {
+      "Vendedor": "Vendedor 08",
+      "pedidos": 66,
+      "receita_liquida_reais": 25454.55
+    },
+    {
+      "Vendedor": "Vendedor 09",
+      "pedidos": 63,
+      "receita_liquida_reais": 25240.9
+    },
+    {
+      "Vendedor": "Vendedor 06",
+      "pedidos": 63,
+      "receita_liquida_reais": 24757.65
+    },
+    {
+      "Vendedor": "Vendedor 14",
+      "pedidos": 68,
+      "receita_liquida_reais": 24289.6
+    },
+    {
+      "Vendedor": "Vendedor 01",
+      "pedidos": 66,
+      "receita_liquida_reais": 23284.45
+    }
+  ]
+]

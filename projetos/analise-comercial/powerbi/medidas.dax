@@ -1,0 +1,26 @@
+// Crie cada medida separadamente no Power BI Desktop.
+// Valores monetarios em reais. A margem deve ser formatada como porcentagem.
+
+Receita Bruta = DIVIDE(SUM(FatoVendas[ReceitaBrutaCentavos]), 100)
+
+Descontos = DIVIDE(SUM(FatoVendas[DescontoCentavos]), 100)
+
+Receita Liquida = DIVIDE(SUM(FatoVendas[ReceitaLiquidaCentavos]), 100)
+
+Custo = DIVIDE(SUM(FatoVendas[CustoCentavos]), 100)
+
+Lucro Bruto = DIVIDE(SUM(FatoVendas[LucroBrutoCentavos]), 100)
+
+Margem Bruta = DIVIDE([Lucro Bruto], [Receita Liquida])
+
+Pedidos = DISTINCTCOUNT(FatoVendas[VendaID])
+
+Unidades Vendidas = SUM(FatoVendas[Quantidade])
+
+Ticket Medio = DIVIDE([Receita Liquida], [Pedidos])
+
+Receita Mes Anterior = CALCULATE([Receita Liquida], DATEADD(DimCalendario[Data], -1, MONTH))
+
+Variacao Receita Mensal =
+VAR Anterior = [Receita Mes Anterior]
+RETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Liquida] - Anterior, Anterior))
