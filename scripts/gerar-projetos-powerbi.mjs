@@ -185,9 +185,10 @@ function visualPage(study, spec) {
       visualContainerObjects: { background: properties({ show: literal(false) }), border: properties({ show: literal(false) }), padding: padding(0), title: properties({ show: literal(false) }), visualHeader: properties({ show: literal(false) }) }
     });
   }
-  textbox('title', spec.title, 16, 36, 28, palette.ink, true);
-  textbox('subtitle', spec.subtitle, 56, 24, 13, palette.muted);
-  spec.slicers.forEach(([table, name, label], i) => add('slicer' + i, 'slicer', 24 + 416 * i, 88, 400, 80, {
+  // Reserve room for Desktop's textbox line box, which can exceed the font size.
+  textbox('title', spec.title, 8, 48, 28, palette.ink, true);
+  textbox('subtitle', spec.subtitle, 60, 24, 13, palette.muted);
+  spec.slicers.forEach(([table, name, label], i) => add('slicer' + i, 'slicer', 24 + 416 * i, 92, 400, 80, {
     query: { queryState: { Values: { projections: [column(table, name, label)] } } },
     objects: {
       data: properties({ mode: literal('Dropdown') }),
@@ -212,6 +213,7 @@ function visualPage(study, spec) {
   spec.charts.forEach((chart, i) => {
     const measures = chart.measures.map(([name, label]) => metric(study, name, label));
     const categories = chart.columns.map(([table, name, label]) => column(table, name, label));
+    const colors = chart.colors || [palette.blue, palette.teal];
     const sortField = chart.type === 'lineChart' ? categories[0].field : measures[0].field;
     const query = { queryState: chart.type === 'tableEx' ? { Values: { projections: [...categories, ...measures] } } : { Category: { projections: categories }, Y: { projections: measures } }, sortDefinition: { sort: [{ field: sortField, direction: chart.type === 'lineChart' ? 'Ascending' : 'Descending' }] } };
     const objects = chart.type === 'tableEx' ? {
@@ -222,7 +224,11 @@ function visualPage(study, spec) {
       valueAxis: properties({ show: literal(true), fontSize: literal(10), labelColor: fill(palette.muted) }),
       legend: properties({ show: literal(measures.length > 1), fontSize: literal(10) }),
       labels: properties({ show: literal(chart.type !== 'lineChart'), fontSize: literal(10), color: fill(palette.ink) }),
-      dataPoint: measures.flatMap((m, index) => properties({ fill: fill((chart.colors || [palette.blue, palette.teal])[index % (chart.colors || [palette.blue, palette.teal]).length]) }, { metadata: m.queryRef }))
+      // A single measure without a legend uses the default color. Metadata
+      // selectors are retained for multiple measures, preserving distinct series.
+      dataPoint: measures.length === 1
+        ? properties({ defaultColor: fill(colors[0]) })
+        : measures.flatMap((m, index) => properties({ fill: fill(colors[index % colors.length]) }, { metadata: m.queryRef }))
     };
     add('chart' + i, chart.type, chart.x, 324, chart.width, 340, {
       query, objects, visualContainerObjects: {

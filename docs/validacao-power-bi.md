@@ -6,6 +6,20 @@ Antes de comparar, remova filtros de página, relatório e visual, limpe as sele
 
 Nos projetos `.pbip`, a fonte padrão usa os CSVs públicos do commit `a0b11aefd23d71c05243a04217890980a41d47e0`. Os filtros são independentes entre páginas. Siga o [guia de abertura](../powerbi/README.md) para executar a primeira atualização.
 
+## Revisão visual recebida — página Carteira
+
+Uma captura enviada pelo autor em 13/09/2026 mostrou a página Carteira da versão publicada no commit `95de392822de1bb40074283590fccd656fed3064`, com as três segmentações em Todos. A captura foi analisada nesta revisão e não está incluída no repositório.
+
+| Elemento observado | Valores conferidos |
+| --- | --- |
+| Cartões | 180 demandas; 102 concluídas; 78 abertas; 68 abertas em atraso |
+| Demandas por situação | 102 concluídas + 42 em andamento + 36 a fazer = 180 |
+| Atrasos por equipe | Automação 21; Engenharia de Dados 20; BI 14; Processos 13; soma 68 |
+
+A revisão identificou um gráfico de atrasos azul, embora a intenção fosse vermelho `#DC2626`, e uma pequena barra de rolagem no título. O gerador passou a usar a cor padrão explícita nos gráficos de uma medida e a reservar mais altura para o título. Essas alterações de apresentação ainda precisam de nova conferência no Desktop.
+
+A imagem confirma somente a apresentação dos valores acima. Não comprova o comportamento dos filtros, as demais páginas, uma nova atualização ou a reabertura do arquivo. A versão do Desktop não estava visível na captura. O relatório de validação estrutural registra verificações automatizadas e mantém os testes do motor do Power BI como não executados por essa automação.
+
 ## Análise comercial
 
 | Seleção | Pedidos | Receita líquida | Lucro bruto |

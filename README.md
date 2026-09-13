@@ -9,7 +9,9 @@ Estudos demonstrativos de Rafael Peruzini sobre indicadores, qualidade de dados 
 | [Análise comercial](projetos/analise-comercial/README.md) | Como evoluem a receita e a margem? Quais lojas e categorias concentram os resultados? | [Comercial.pbip](powerbi/comercial/Comercial.pbip): 3 páginas, 5 tabelas e 11 medidas DAX. |
 | [Indicadores de projetos](projetos/indicadores-projetos/README.md) | Qual é o backlog? Quantas demandas estão atrasadas? Como variam os prazos entre equipes? | [Projetos.pbip](powerbi/projetos/Projetos.pbip): 3 páginas, 3 tabelas e 15 medidas DAX. |
 
-**Estado das entregas:** os projetos editáveis `.pbip` incluem modelos, consultas Power Query, medidas DAX, filtros e páginas em PBIR. A estrutura foi verificada contra esquemas da Microsoft, com checagem de campos, relacionamentos e totais dos CSVs. A abertura, a atualização, o cálculo DAX e a aparência final ainda precisam ser conferidos no Power BI Desktop. Não há `.pbix` nem capturas do Desktop nesta versão. As imagens nos estudos são gráficos estáticos gerados pelo Python.
+**Estado das entregas:** os projetos editáveis `.pbip` incluem modelos, consultas Power Query, medidas DAX, filtros e páginas em PBIR. A estrutura foi verificada contra esquemas da Microsoft, com checagem de campos, relacionamentos e totais dos CSVs. A validação completa de abertura, atualização, cálculo DAX e aparência final ainda precisa ser concluída no Power BI Desktop. Não há `.pbix` nem capturas do Desktop nesta versão. As imagens nos estudos são gráficos estáticos gerados pelo Python.
+
+**Revisão visual parcial:** uma captura da página Carteira confirmou os cartões e os dois gráficos sem filtros. Os ajustes de cor e de espaço do título, as demais páginas e as interações continuam pendentes de conferência. Os valores observados estão registrados no [roteiro de validação](docs/validacao-power-bi.md#revisão-visual-recebida--página-carteira).
 
 ## Abrir no Power BI
 

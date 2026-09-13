@@ -55,6 +55,8 @@ Salve, feche e reabra o projeto; execute outra atualização. Depois use **Arqui
 
 O arquivo [validacao-estrutural.json](validacao-estrutural.json) registra o que foi verificado por código. A validação de esquema não executa Power Query, DAX nem a renderização dos visuais.
 
+Uma primeira captura da página Carteira confirmou os totais e os agrupamentos sem filtros. A [revisão visual registrada](../docs/validacao-power-bi.md#revisão-visual-recebida--página-carteira) descreve essa evidência e os ajustes de cor e altura do título. Para receber alterações publicadas depois de baixar o projeto, extraia o ZIP atualizado em outra pasta e abra essa cópia, preservando suas edições anteriores. O botão Atualizar busca dados; ele não baixa alterações na definição do relatório do GitHub.
+
 ## Solução de problemas
 
 | Sintoma | Ação |
