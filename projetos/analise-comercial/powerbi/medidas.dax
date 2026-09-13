@@ -1,4 +1,5 @@
-// Crie cada medida separadamente no Power BI Desktop.
+// Estas medidas já estão incluídas no projeto Comercial.pbip.
+// Para montar outro relatório manualmente, crie cada medida separadamente.
 // Valores monetarios em reais. A margem deve ser formatada como porcentagem.
 
 Receita Bruta = DIVIDE(SUM(FatoVendas[ReceitaBrutaCentavos]), 100)

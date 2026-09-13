@@ -1,0 +1,450 @@
+{
+  "name": "Projetos",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "pt-BR",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimCalendario",
+        "columns": [
+          {
+            "name": "Data",
+            "dataType": "dateTime",
+            "sourceColumn": "Data",
+            "summarizeBy": "none",
+            "isKey": true,
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Ano",
+            "dataType": "int64",
+            "sourceColumn": "Ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Mes",
+            "dataType": "int64",
+            "sourceColumn": "Mes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AnoMes",
+            "dataType": "string",
+            "sourceColumn": "AnoMes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Dia",
+            "dataType": "int64",
+            "sourceColumn": "Dia",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCalendario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/indicadores-projetos/dados/tratados/DimCalendario.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"Data\", type date}, {\"Ano\", Int64.Type}, {\"Mes\", Int64.Type}, {\"AnoMes\", type text}, {\"Dia\", Int64.Type}}, \"en-US\"),",
+                "    Inicio = Date.StartOfYear(List.Min(Tipos[Data])),",
+                "    Fim = Date.EndOfYear(List.Max(Tipos[Data])),",
+                "    Datas = Table.FromList(List.Dates(Inicio, Duration.Days(Fim - Inicio) + 1, #duration(1, 0, 0, 0)), Splitter.SplitByNothing(), {\"Data\"}),",
+                "    DataTipada = Table.TransformColumnTypes(Datas, {{\"Data\", type date}}),",
+                "    Ano = Table.AddColumn(DataTipada, \"Ano\", each Date.Year([Data]), Int64.Type),",
+                "    Mes = Table.AddColumn(Ano, \"Mes\", each Date.Month([Data]), Int64.Type),",
+                "    AnoMes = Table.AddColumn(Mes, \"AnoMes\", each Date.ToText([Data], \"yyyy-MM\", \"en-US\"), type text),",
+                "    Completo = Table.AddColumn(AnoMes, \"Dia\", each Date.Day([Data]), Int64.Type)",
+                "in",
+                "    Completo"
+              ]
+            }
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "DimEquipe",
+        "columns": [
+          {
+            "name": "EquipeID",
+            "dataType": "string",
+            "sourceColumn": "EquipeID",
+            "summarizeBy": "none",
+            "isKey": true,
+            "isHidden": true
+          },
+          {
+            "name": "Equipe",
+            "dataType": "string",
+            "sourceColumn": "Equipe",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimEquipe",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/indicadores-projetos/dados/tratados/DimEquipe.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"EquipeID\", type text}, {\"Equipe\", type text}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FatoDemandas",
+        "columns": [
+          {
+            "name": "DemandaID",
+            "dataType": "string",
+            "sourceColumn": "DemandaID",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "DataCriacao",
+            "dataType": "dateTime",
+            "sourceColumn": "DataCriacao",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "DataInicio",
+            "dataType": "dateTime",
+            "sourceColumn": "DataInicio",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "DataConclusao",
+            "dataType": "dateTime",
+            "sourceColumn": "DataConclusao",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "DataPrazo",
+            "dataType": "dateTime",
+            "sourceColumn": "DataPrazo",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "EquipeID",
+            "dataType": "string",
+            "sourceColumn": "EquipeID",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "TipoDemanda",
+            "dataType": "string",
+            "sourceColumn": "TipoDemanda",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Prioridade",
+            "dataType": "string",
+            "sourceColumn": "Prioridade",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EsforcoPlanejadoHoras",
+            "dataType": "int64",
+            "sourceColumn": "EsforcoPlanejadoHoras",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EsforcoRealHoras",
+            "dataType": "int64",
+            "sourceColumn": "EsforcoRealHoras",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DataReferencia",
+            "dataType": "dateTime",
+            "sourceColumn": "DataReferencia",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "TempoCicloDias",
+            "dataType": "int64",
+            "sourceColumn": "TempoCicloDias",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LeadTimeDias",
+            "dataType": "int64",
+            "sourceColumn": "LeadTimeDias",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EmAtraso",
+            "dataType": "int64",
+            "sourceColumn": "EmAtraso",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EntregueNoPrazo",
+            "dataType": "int64",
+            "sourceColumn": "EntregueNoPrazo",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FatoDemandas",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/indicadores-projetos/dados/tratados/FatoDemandas.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"DemandaID\", type text}, {\"DataCriacao\", type date}, {\"DataInicio\", type date}, {\"DataConclusao\", type date}, {\"DataPrazo\", type date}, {\"EquipeID\", type text}, {\"TipoDemanda\", type text}, {\"Prioridade\", type text}, {\"Status\", type text}, {\"EsforcoPlanejadoHoras\", Int64.Type}, {\"EsforcoRealHoras\", Int64.Type}, {\"DataReferencia\", type date}, {\"TempoCicloDias\", Int64.Type}, {\"LeadTimeDias\", Int64.Type}, {\"EmAtraso\", Int64.Type}, {\"EntregueNoPrazo\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Demandas",
+            "expression": [
+              "DISTINCTCOUNT(FatoDemandas[DemandaID])"
+            ],
+            "formatString": "#,0",
+            "description": "Contagem distinta das demandas válidas na fotografia de 31/12/2025."
+          },
+          {
+            "name": "Concluidas",
+            "expression": [
+              "CALCULATE([Demandas], KEEPFILTERS(FatoDemandas[Status] = \"Concluida\"))"
+            ],
+            "formatString": "#,0",
+            "description": "Demandas com status Concluida, respeitando a seleção de status."
+          },
+          {
+            "name": "Backlog Aberto",
+            "expression": [
+              "CALCULATE([Demandas], KEEPFILTERS(FatoDemandas[Status] <> \"Concluida\"))"
+            ],
+            "formatString": "#,0",
+            "description": "Demandas a fazer ou em andamento na data fixa de referência."
+          },
+          {
+            "name": "Em Andamento",
+            "expression": [
+              "CALCULATE([Demandas], KEEPFILTERS(FatoDemandas[Status] = \"Em andamento\"))"
+            ],
+            "formatString": "#,0",
+            "description": "Demandas com trabalho iniciado e ainda não concluído na fotografia."
+          },
+          {
+            "name": "Abertas em Atraso",
+            "expression": [
+              "SUM(FatoDemandas[EmAtraso])"
+            ],
+            "formatString": "#,0",
+            "description": "Demandas abertas cujo prazo é anterior a 31/12/2025."
+          },
+          {
+            "name": "Entregas no Prazo",
+            "expression": [
+              "SUM(FatoDemandas[EntregueNoPrazo])"
+            ],
+            "formatString": "#,0",
+            "description": "Demandas concluídas até o prazo inclusive; abertas têm indicador nulo."
+          },
+          {
+            "name": "Taxa de Entregas no Prazo",
+            "expression": [
+              "DIVIDE([Entregas no Prazo], [Concluidas])"
+            ],
+            "formatString": "0.00%",
+            "description": "Entregas no prazo divididas pelas concluídas, sob o filtro de criação."
+          },
+          {
+            "name": "Tempo Medio de Ciclo",
+            "expression": [
+              "AVERAGE(FatoDemandas[TempoCicloDias])"
+            ],
+            "formatString": "0.00",
+            "description": "Média de conclusão menos início, em dias corridos; somente concluídas."
+          },
+          {
+            "name": "Lead Time Medio",
+            "expression": [
+              "AVERAGE(FatoDemandas[LeadTimeDias])"
+            ],
+            "formatString": "0.00",
+            "description": "Média de conclusão menos criação, em dias corridos; somente concluídas."
+          },
+          {
+            "name": "Data de Referencia",
+            "expression": [
+              "MAX(FatoDemandas[DataReferencia])"
+            ],
+            "formatString": "dd/MM/yyyy",
+            "description": "Data fixa da fotografia, sem dependência do relógio do computador."
+          },
+          {
+            "name": "Concluidas por Data de Entrega",
+            "expression": [
+              "CALCULATE([Concluidas], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))"
+            ],
+            "formatString": "#,0",
+            "description": "Concluídas filtradas pelo calendário de conclusão, usando USERELATIONSHIP."
+          },
+          {
+            "name": "Percentual do Backlog em Atraso",
+            "expression": [
+              "DIVIDE([Abertas em Atraso], [Backlog Aberto])"
+            ],
+            "formatString": "0.00%",
+            "description": "Abertas vencidas divididas pelo backlog aberto."
+          },
+          {
+            "name": "No Prazo por Data de Entrega",
+            "expression": [
+              "CALCULATE([Entregas no Prazo], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))"
+            ],
+            "formatString": "#,0",
+            "description": "Concluídas no prazo filtradas pela data de conclusão."
+          },
+          {
+            "name": "Taxa no Prazo por Data de Entrega",
+            "expression": [
+              "DIVIDE([No Prazo por Data de Entrega], [Concluidas por Data de Entrega])"
+            ],
+            "formatString": "0.00%",
+            "description": "Proporção de entregas no prazo entre as concluídas no período de entrega."
+          },
+          {
+            "name": "Ciclo por Data de Entrega",
+            "expression": [
+              "CALCULATE([Tempo Medio de Ciclo], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))"
+            ],
+            "formatString": "0.00",
+            "description": "Tempo médio de ciclo das concluídas no período de entrega."
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FatoDemandas_DataCriacao_DimCalendario",
+        "fromTable": "FatoDemandas",
+        "fromColumn": "DataCriacao",
+        "fromCardinality": "many",
+        "toTable": "DimCalendario",
+        "toColumn": "Data",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "FatoDemandas_DataConclusao_DimCalendario",
+        "fromTable": "FatoDemandas",
+        "fromColumn": "DataConclusao",
+        "fromCardinality": "many",
+        "toTable": "DimCalendario",
+        "toColumn": "Data",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": false
+      },
+      {
+        "name": "FatoDemandas_EquipeID_DimEquipe",
+        "fromTable": "FatoDemandas",
+        "fromColumn": "EquipeID",
+        "fromCardinality": "many",
+        "toTable": "DimEquipe",
+        "toColumn": "EquipeID",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DimCalendario\",\"DimEquipe\",\"FatoDemandas\"]"
+      }
+    ]
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "name": "Comercial",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "pt-BR",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "DimCalendario",
+        "columns": [
+          {
+            "name": "Data",
+            "dataType": "dateTime",
+            "sourceColumn": "Data",
+            "summarizeBy": "none",
+            "isKey": true,
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Ano",
+            "dataType": "int64",
+            "sourceColumn": "Ano",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Mes",
+            "dataType": "int64",
+            "sourceColumn": "Mes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AnoMes",
+            "dataType": "string",
+            "sourceColumn": "AnoMes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Dia",
+            "dataType": "int64",
+            "sourceColumn": "Dia",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCalendario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/analise-comercial/dados/tratados/DimCalendario.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"Data\", type date}, {\"Ano\", Int64.Type}, {\"Mes\", Int64.Type}, {\"AnoMes\", type text}, {\"Dia\", Int64.Type}}, \"en-US\"),",
+                "    Inicio = Date.StartOfYear(List.Min(Tipos[Data])),",
+                "    Fim = Date.EndOfYear(List.Max(Tipos[Data])),",
+                "    Datas = Table.FromList(List.Dates(Inicio, Duration.Days(Fim - Inicio) + 1, #duration(1, 0, 0, 0)), Splitter.SplitByNothing(), {\"Data\"}),",
+                "    DataTipada = Table.TransformColumnTypes(Datas, {{\"Data\", type date}}),",
+                "    Ano = Table.AddColumn(DataTipada, \"Ano\", each Date.Year([Data]), Int64.Type),",
+                "    Mes = Table.AddColumn(Ano, \"Mes\", each Date.Month([Data]), Int64.Type),",
+                "    AnoMes = Table.AddColumn(Mes, \"AnoMes\", each Date.ToText([Data], \"yyyy-MM\", \"en-US\"), type text),",
+                "    Completo = Table.AddColumn(AnoMes, \"Dia\", each Date.Day([Data]), Int64.Type)",
+                "in",
+                "    Completo"
+              ]
+            }
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "DimLoja",
+        "columns": [
+          {
+            "name": "LojaID",
+            "dataType": "string",
+            "sourceColumn": "LojaID",
+            "summarizeBy": "none",
+            "isKey": true,
+            "isHidden": true
+          },
+          {
+            "name": "Loja",
+            "dataType": "string",
+            "sourceColumn": "Loja",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UF",
+            "dataType": "string",
+            "sourceColumn": "UF",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimLoja",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/analise-comercial/dados/tratados/DimLoja.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"LojaID\", type text}, {\"Loja\", type text}, {\"UF\", type text}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimProduto",
+        "columns": [
+          {
+            "name": "ProdutoID",
+            "dataType": "string",
+            "sourceColumn": "ProdutoID",
+            "summarizeBy": "none",
+            "isKey": true,
+            "isHidden": true
+          },
+          {
+            "name": "Produto",
+            "dataType": "string",
+            "sourceColumn": "Produto",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Categoria",
+            "dataType": "string",
+            "sourceColumn": "Categoria",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimProduto",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/analise-comercial/dados/tratados/DimProduto.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"ProdutoID\", type text}, {\"Produto\", type text}, {\"Categoria\", type text}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimVendedor",
+        "columns": [
+          {
+            "name": "VendedorID",
+            "dataType": "string",
+            "sourceColumn": "VendedorID",
+            "summarizeBy": "none",
+            "isKey": true,
+            "isHidden": true
+          },
+          {
+            "name": "Vendedor",
+            "dataType": "string",
+            "sourceColumn": "Vendedor",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimVendedor",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/analise-comercial/dados/tratados/DimVendedor.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"VendedorID\", type text}, {\"Vendedor\", type text}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FatoVendas",
+        "columns": [
+          {
+            "name": "VendaID",
+            "dataType": "string",
+            "sourceColumn": "VendaID",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Data",
+            "dataType": "dateTime",
+            "sourceColumn": "Data",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "LojaID",
+            "dataType": "string",
+            "sourceColumn": "LojaID",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "ProdutoID",
+            "dataType": "string",
+            "sourceColumn": "ProdutoID",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "VendedorID",
+            "dataType": "string",
+            "sourceColumn": "VendedorID",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Quantidade",
+            "dataType": "int64",
+            "sourceColumn": "Quantidade",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PrecoUnitarioCentavos",
+            "dataType": "int64",
+            "sourceColumn": "PrecoUnitarioCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "CustoUnitarioCentavos",
+            "dataType": "int64",
+            "sourceColumn": "CustoUnitarioCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "DescontoPct",
+            "dataType": "int64",
+            "sourceColumn": "DescontoPct",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ReceitaBrutaCentavos",
+            "dataType": "int64",
+            "sourceColumn": "ReceitaBrutaCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "DescontoCentavos",
+            "dataType": "int64",
+            "sourceColumn": "DescontoCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "ReceitaLiquidaCentavos",
+            "dataType": "int64",
+            "sourceColumn": "ReceitaLiquidaCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "CustoCentavos",
+            "dataType": "int64",
+            "sourceColumn": "CustoCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "LucroBrutoCentavos",
+            "dataType": "int64",
+            "sourceColumn": "LucroBrutoCentavos",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FatoVendas",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(",
+                "        Web.Contents(\"https://raw.githubusercontent.com\",",
+                "            [RelativePath=\"Peruzini/NOVOREPOSIT/a0b11aefd23d71c05243a04217890980a41d47e0/projetos/analise-comercial/dados/tratados/FatoVendas.csv\"]),",
+                "        [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Cabecalho = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    Nulos = Table.ReplaceValue(Cabecalho, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),",
+                "    Tipos = Table.TransformColumnTypes(Nulos, {{\"VendaID\", type text}, {\"Data\", type date}, {\"LojaID\", type text}, {\"ProdutoID\", type text}, {\"VendedorID\", type text}, {\"Quantidade\", Int64.Type}, {\"PrecoUnitarioCentavos\", Int64.Type}, {\"CustoUnitarioCentavos\", Int64.Type}, {\"DescontoPct\", Int64.Type}, {\"Status\", type text}, {\"ReceitaBrutaCentavos\", Int64.Type}, {\"DescontoCentavos\", Int64.Type}, {\"ReceitaLiquidaCentavos\", Int64.Type}, {\"CustoCentavos\", Int64.Type}, {\"LucroBrutoCentavos\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Tipos"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Receita Bruta",
+            "expression": [
+              "DIVIDE(SUM(FatoVendas[ReceitaBrutaCentavos]), 100)"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Vendas válidas e concluídas antes dos descontos. Centavos convertidos em reais."
+          },
+          {
+            "name": "Descontos",
+            "expression": [
+              "DIVIDE(SUM(FatoVendas[DescontoCentavos]), 100)"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Desconto calculado e arredondado por linha, em reais."
+          },
+          {
+            "name": "Receita Liquida",
+            "expression": [
+              "DIVIDE(SUM(FatoVendas[ReceitaLiquidaCentavos]), 100)"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Receita bruta menos descontos. Não inclui impostos, frete ou devoluções."
+          },
+          {
+            "name": "Custo",
+            "expression": [
+              "DIVIDE(SUM(FatoVendas[CustoCentavos]), 100)"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Quantidade vendida multiplicada pelo custo unitário, em reais."
+          },
+          {
+            "name": "Lucro Bruto",
+            "expression": [
+              "DIVIDE(SUM(FatoVendas[LucroBrutoCentavos]), 100)"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Receita líquida menos custo da mercadoria; não é lucro líquido."
+          },
+          {
+            "name": "Margem Bruta",
+            "expression": [
+              "DIVIDE([Lucro Bruto], [Receita Liquida])"
+            ],
+            "formatString": "0.00%",
+            "description": "Lucro bruto total dividido pela receita líquida total, com ponderação pelo faturamento."
+          },
+          {
+            "name": "Pedidos",
+            "expression": [
+              "DISTINCTCOUNT(FatoVendas[VendaID])"
+            ],
+            "formatString": "#,0",
+            "description": "Contagem distinta de VendaID. Neste exemplo cada pedido tem um único item."
+          },
+          {
+            "name": "Unidades Vendidas",
+            "expression": [
+              "SUM(FatoVendas[Quantidade])"
+            ],
+            "formatString": "#,0",
+            "description": "Soma das quantidades das vendas válidas."
+          },
+          {
+            "name": "Ticket Medio",
+            "expression": [
+              "DIVIDE([Receita Liquida], [Pedidos])"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Receita líquida dividida pela quantidade distinta de pedidos."
+          },
+          {
+            "name": "Receita Mes Anterior",
+            "expression": [
+              "CALCULATE([Receita Liquida], DATEADD(DimCalendario[Data], -1, MONTH))"
+            ],
+            "formatString": "\"R$\" #,0.00",
+            "description": "Receita no conjunto de datas deslocado um mês para trás. Use em análise mensal."
+          },
+          {
+            "name": "Variacao Receita Mensal",
+            "expression": [
+              "VAR Atual = [Receita Liquida]",
+              "VAR Anterior = [Receita Mes Anterior]",
+              "RETURN",
+              "    IF(",
+              "        NOT ISBLANK(Atual) && NOT ISBLANK(Anterior),",
+              "        DIVIDE(Atual - Anterior, Anterior)",
+              "    )"
+            ],
+            "formatString": "0.00%",
+            "description": "Variação relativa ao mês anterior; em branco se um dos períodos não tem receita."
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FatoVendas_Data_DimCalendario",
+        "fromTable": "FatoVendas",
+        "fromColumn": "Data",
+        "fromCardinality": "many",
+        "toTable": "DimCalendario",
+        "toColumn": "Data",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "FatoVendas_LojaID_DimLoja",
+        "fromTable": "FatoVendas",
+        "fromColumn": "LojaID",
+        "fromCardinality": "many",
+        "toTable": "DimLoja",
+        "toColumn": "LojaID",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "FatoVendas_ProdutoID_DimProduto",
+        "fromTable": "FatoVendas",
+        "fromColumn": "ProdutoID",
+        "fromCardinality": "many",
+        "toTable": "DimProduto",
+        "toColumn": "ProdutoID",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "FatoVendas_VendedorID_DimVendedor",
+        "fromTable": "FatoVendas",
+        "fromColumn": "VendedorID",
+        "fromCardinality": "many",
+        "toTable": "DimVendedor",
+        "toColumn": "VendedorID",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DimCalendario\",\"DimLoja\",\"DimProduto\",\"DimVendedor\",\"FatoVendas\"]"
+      }
+    ]
+  }
+}

@@ -1,28 +1,15 @@
-# Completar a entrega do Power BI
+# Finalizar e apresentar o portfólio Power BI
 
-Os dois estudos já têm dados, SQL, medidas DAX e consultas M. Para apresentar um dashboard finalizado no portfólio, complete os passos no Power BI Desktop e publique o arquivo resultante.
+Os projetos editáveis já estão incluídos. A etapa restante é executá-los e conferir o resultado no Power BI Desktop, antes de apresentar os painéis como finalizados.
 
-1. Siga o roteiro do README do estudo e aponte `PastaDados` para os CSVs tratados. As consultas auxiliares `TabelasComerciais` e `TabelasProjetos` retornam registros de tabelas; mantenha desabilitada a carga dessas auxiliares e carregue as consultas individuais das fatos e dimensões.
-2. Confira os tipos, as chaves e os relacionamentos. Colunas de dinheiro em centavos são inteiras; as medidas fazem a conversão para reais.
-3. Crie as medidas separadamente. Os arquivos `.dax` não são scripts para colar inteiros em uma única medida.
-4. Monte as páginas sugeridas, incluindo filtros de período e dimensões pertinentes. Use títulos que expressem o indicador e a unidade.
-5. Valide o total geral com o resumo JSON. Use o [roteiro de validação](validacao-power-bi.md) para conferir recortes de mês e loja/equipe, incluindo seleções sem dados.
-6. Revise as interações entre gráficos, os filtros, os totais e o tratamento de seleções sem dados. Evite mostrar zero quando a taxa não puder ser calculada.
-7. Salve `analise-comercial.pbix` ou `indicadores-projetos.pbix` na pasta `powerbi` do respectivo estudo. Feche e abra o arquivo para confirmar que ele funciona.
-8. Capture as páginas do próprio Power BI e salve as imagens em uma pasta `imagens` do estudo. Atualize o README para apontar às capturas reais e informar a versão do Desktop usada na validação.
-9. Publique os arquivos pelo GitHub e confira os links. O README deve refletir o estado efetivo da entrega.
+1. [Baixe o repositório completo](https://github.com/Peruzini/NOVOREPOSIT/archive/refs/heads/main.zip), extraia-o e abra um dos arquivos `.pbip`, seguindo o [guia de abertura](../powerbi/README.md).
+2. Atualize os dados com acesso Anônimo à fonte pública do GitHub. Confira as tabelas, os relacionamentos e a dimensão de datas.
+3. Compare os cartões e os filtros com os [valores esperados](validacao-power-bi.md). Verifique especialmente margem ponderada, demandas abertas e concluídas e os papéis de criação e conclusão.
+4. Revise a apresentação: títulos, unidades, contraste, tamanho dos textos, rolagem, ordenação e interação entre filtros e gráficos. Faça os ajustes necessários no Desktop.
+5. Salve, feche, reabra e atualize novamente. Registre a versão do Desktop, a data da conferência e os recortes testados. Use **Arquivo → Salvar como** para gerar o `.pbix`.
+6. Publique no respectivo estudo o `.pbix` e capturas das três páginas, obtidas do próprio relatório. Preserve também os arquivos do projeto editável. Atualize os READMEs com o estado realmente validado.
+7. Prepare uma apresentação de 15 minutos com o [roteiro do portfólio](roteiro-de-apresentacao.md): pergunta de negócio, tratamento, modelo, indicadores, interpretação e validação.
 
-## Aparência
+As imagens SVG já publicadas foram geradas pelo Python e não são capturas do Power BI. Os dados continuam identificados como sintéticos. O valor do estudo está nas decisões demonstradas e na capacidade de reproduzir e explicar os resultados.
 
-O tema compartilhado usa azul `#2563EB`, verde-água `#14B8A6`, fundo claro `#F8FAFC` e texto escuro `#0F172A`. Use cinza `#475569` em texto secundário e vermelho `#DC2626` apenas para chamar atenção a situações que exijam ação, sem depender exclusivamente da cor.
-
-Priorize espaçamento consistente, poucas cores por página, rótulos legíveis e unidades explícitas. Use uma captura do painel em tamanho confortável para leitura no README.
-
-## O que deve acompanhar o arquivo
-
-- Origem e natureza dos dados, com a identificação de que são sintéticos neste caso.
-- Perguntas de negócio, definições dos indicadores e premissas.
-- Modelo de dados e instruções para atualizar a fonte no computador de outra pessoa.
-- Evidências de validação, limitações e principais decisões técnicas.
-
-Um `.pbix` pode carregar dados importados. Use neste portfólio os exemplos sintéticos ou bases cuja divulgação esteja autorizada. Os arquivos pessoais da seleção FIESC e seus materiais restritos não fazem parte destes estudos.
+[Voltar ao portfólio](../README.md)

@@ -1,0 +1,72 @@
+{
+  "scope": "Verificação estática de esquemas Microsoft, referências, layout e dados CSV. Não executa Power BI Desktop.",
+  "schemasSource": "https://github.com/microsoft/json-schemas",
+  "schemaValidatedDocuments": 90,
+  "visualFieldBindingsChecked": 74,
+  "overlappingVisualRectangles": 0,
+  "missingRelationshipsOrKeys": 0,
+  "studies": [
+    {
+      "project": "Comercial",
+      "tables": 5,
+      "measures": 11,
+      "relationships": 4,
+      "pages": [
+        {
+          "name": "1 | Visão geral",
+          "visuals": 12
+        },
+        {
+          "name": "2 | Lojas e categorias",
+          "visuals": 12
+        },
+        {
+          "name": "3 | Vendedores",
+          "visuals": 12
+        }
+      ]
+    },
+    {
+      "project": "Projetos",
+      "tables": 3,
+      "measures": 15,
+      "relationships": 3,
+      "pages": [
+        {
+          "name": "1 | Carteira",
+          "visuals": 12
+        },
+        {
+          "name": "2 | Prazos",
+          "visuals": 12
+        },
+        {
+          "name": "3 | Entregas",
+          "visuals": 12
+        }
+      ]
+    }
+  ],
+  "referenceTotalsFromCSV": {
+    "comercial": {
+      "pedidos": 1129,
+      "receitaCentavos": 45090300,
+      "lucroCentavos": 17926800
+    },
+    "projetos": {
+      "demandas": 180,
+      "concluidas": 102,
+      "backlog": 78,
+      "abertasEmAtraso": 68,
+      "entregasNoPrazo": 64
+    }
+  },
+  "desktop": {
+    "opened": false,
+    "refreshed": false,
+    "daxEngineValidated": false,
+    "powerQueryEngineValidated": false,
+    "visualRenderVerified": false,
+    "pbixExported": false
+  }
+}

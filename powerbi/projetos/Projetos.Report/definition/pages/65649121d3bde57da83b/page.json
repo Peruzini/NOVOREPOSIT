@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "65649121d3bde57da83b",
+  "displayName": "2 | Prazos",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "adf8e7c0fa1ab87e8c02",
+      "target": "a0ca032523dc350dc6c6",
+      "type": "DataFilter"
+    },
+    {
+      "source": "adf8e7c0fa1ab87e8c02",
+      "target": "2d2ad6e5742b823e486d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "adf8e7c0fa1ab87e8c02",
+      "target": "6d52151a3d4f73389bf5",
+      "type": "DataFilter"
+    },
+    {
+      "source": "adf8e7c0fa1ab87e8c02",
+      "target": "cf1433ccfd965441e21b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "adf8e7c0fa1ab87e8c02",
+      "target": "e448f048c2695e78ad2d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e448f048c2695e78ad2d",
+      "target": "a0ca032523dc350dc6c6",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e448f048c2695e78ad2d",
+      "target": "2d2ad6e5742b823e486d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e448f048c2695e78ad2d",
+      "target": "6d52151a3d4f73389bf5",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e448f048c2695e78ad2d",
+      "target": "cf1433ccfd965441e21b",
+      "type": "DataFilter"
+    },
+    {
+      "source": "e448f048c2695e78ad2d",
+      "target": "adf8e7c0fa1ab87e8c02",
+      "type": "DataFilter"
+    }
+  ]
+}

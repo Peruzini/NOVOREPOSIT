@@ -1,4 +1,5 @@
-// Crie cada medida separadamente no Power BI Desktop.
+// Estas medidas já estão incluídas no projeto Projetos.pbip.
+// Para montar outro relatório manualmente, crie cada medida separadamente.
 // DimCalendario[Data] -> FatoDemandas[DataCriacao]: relacionamento ativo.
 // DimCalendario[Data] -> FatoDemandas[DataConclusao]: relacionamento inativo.
 
@@ -24,3 +25,14 @@ Data de Referencia = MAX(FatoDemandas[DataReferencia])
 
 Concluidas por Data de Entrega =
 CALCULATE([Concluidas], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))
+
+Percentual do Backlog em Atraso = DIVIDE([Abertas em Atraso], [Backlog Aberto])
+
+No Prazo por Data de Entrega =
+CALCULATE([Entregas no Prazo], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))
+
+Taxa no Prazo por Data de Entrega =
+DIVIDE([No Prazo por Data de Entrega], [Concluidas por Data de Entrega])
+
+Ciclo por Data de Entrega =
+CALCULATE([Tempo Medio de Ciclo], USERELATIONSHIP(DimCalendario[Data], FatoDemandas[DataConclusao]))

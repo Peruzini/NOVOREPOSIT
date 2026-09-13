@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "020a1b0c578ed2e2116c",
+  "displayName": "1 | Carteira",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "49256822f92342ab7740",
+      "target": "61335f5e610fc0569d4c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "49256822f92342ab7740",
+      "target": "45f72a0c8897bb5458a3",
+      "type": "DataFilter"
+    },
+    {
+      "source": "49256822f92342ab7740",
+      "target": "999d5afe5a370f6b47c4",
+      "type": "DataFilter"
+    },
+    {
+      "source": "49256822f92342ab7740",
+      "target": "073ce88f8da21f2f1570",
+      "type": "DataFilter"
+    },
+    {
+      "source": "49256822f92342ab7740",
+      "target": "07dda55cfdbbba4c2775",
+      "type": "DataFilter"
+    },
+    {
+      "source": "07dda55cfdbbba4c2775",
+      "target": "61335f5e610fc0569d4c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "07dda55cfdbbba4c2775",
+      "target": "45f72a0c8897bb5458a3",
+      "type": "DataFilter"
+    },
+    {
+      "source": "07dda55cfdbbba4c2775",
+      "target": "999d5afe5a370f6b47c4",
+      "type": "DataFilter"
+    },
+    {
+      "source": "07dda55cfdbbba4c2775",
+      "target": "073ce88f8da21f2f1570",
+      "type": "DataFilter"
+    },
+    {
+      "source": "07dda55cfdbbba4c2775",
+      "target": "49256822f92342ab7740",
+      "type": "DataFilter"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "29e128d6cb32ad1a60a6",
+  "displayName": "3 | Entregas",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "79a38b373a2f61cffbd9",
+      "target": "a5b362a8457a052fabf1",
+      "type": "DataFilter"
+    },
+    {
+      "source": "79a38b373a2f61cffbd9",
+      "target": "3a05d1ea0cde4e33ea17",
+      "type": "DataFilter"
+    },
+    {
+      "source": "79a38b373a2f61cffbd9",
+      "target": "5230d3ec02461ff533f1",
+      "type": "DataFilter"
+    },
+    {
+      "source": "79a38b373a2f61cffbd9",
+      "target": "52b2aa8f7e13296cd7e7",
+      "type": "DataFilter"
+    },
+    {
+      "source": "79a38b373a2f61cffbd9",
+      "target": "cb9f98fff4e6b39099b8",
+      "type": "DataFilter"
+    },
+    {
+      "source": "cb9f98fff4e6b39099b8",
+      "target": "a5b362a8457a052fabf1",
+      "type": "DataFilter"
+    },
+    {
+      "source": "cb9f98fff4e6b39099b8",
+      "target": "3a05d1ea0cde4e33ea17",
+      "type": "DataFilter"
+    },
+    {
+      "source": "cb9f98fff4e6b39099b8",
+      "target": "5230d3ec02461ff533f1",
+      "type": "DataFilter"
+    },
+    {
+      "source": "cb9f98fff4e6b39099b8",
+      "target": "52b2aa8f7e13296cd7e7",
+      "type": "DataFilter"
+    },
+    {
+      "source": "cb9f98fff4e6b39099b8",
+      "target": "79a38b373a2f61cffbd9",
+      "type": "DataFilter"
+    }
+  ]
+}

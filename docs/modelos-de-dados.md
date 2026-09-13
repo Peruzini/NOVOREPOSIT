@@ -1,6 +1,8 @@
 # Modelos de dados dos estudos
 
-Estes diagramas documentam as tabelas tratadas e a configuração proposta para importação no Power BI. O relatório `.pbix` ainda depende de montagem e validação no Desktop.
+Estes diagramas documentam os modelos incluídos nos projetos `.pbip`. Os relacionamentos, as consultas e as medidas já estão definidos; a execução deve ser conferida no Desktop antes de salvar o `.pbix`. O [guia de abertura](../powerbi/README.md) explica como atualizar os dados.
+
+Nos modelos Power BI, `DimCalendario` é identificada como tabela de tempo, com `Data` como chave, e ampliada no Power Query para os anos completos de 2025 e 2026. Os CSVs originais permanecem preservados.
 
 ## Análise comercial
 

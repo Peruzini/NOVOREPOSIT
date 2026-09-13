@@ -4,6 +4,8 @@ Os valores abaixo foram recalculados dos CSVs tratados publicados. São referên
 
 Antes de comparar, remova filtros de página, relatório e visual, limpe as seleções nos gráficos e confira o caminho da fonte. Use os CSVs dos respectivos estudos.
 
+Nos projetos `.pbip`, a fonte padrão usa os CSVs públicos do commit `a0b11aefd23d71c05243a04217890980a41d47e0`. Os filtros são independentes entre páginas. Siga o [guia de abertura](../powerbi/README.md) para executar a primeira atualização.
+
 ## Análise comercial
 
 | Seleção | Pedidos | Receita líquida | Lucro bruto |
@@ -29,7 +31,9 @@ Teste a medida `Variacao Receita Mensal` em janeiro de 2025, que não tem mês a
 
 Sem filtros, confira também **42 em andamento**, **64 entregas no prazo**, **62,75% de entregas no prazo**, **17,85 dias de ciclo médio** e **21,37 dias de lead time médio**.
 
-Para testar a data de entrega, crie uma tabela com `DimCalendario[AnoMes]` e `Concluidas por Data de Entrega`. Janeiro de 2025 deve mostrar **2** conclusões e dezembro **14**; o total é **102**. O calendário de criação não pode ser usado como substituto do calendário de conclusão.
+Para testar a data de entrega, abra a página **Entregas**. Selecione janeiro de 2025: o cartão de concluídas deve mostrar **2**; em dezembro, **14**; sem filtro, **102**. Para uma conferência tabular, use `DimCalendario[AnoMes]` com `Concluidas por Data de Entrega`. O calendário de criação não pode ser usado como substituto do calendário de conclusão.
+
+Na página Prazos, sem filtros, o percentual de backlog em atraso deve ser **87,18%**. Na página Entregas, a taxa no prazo deve ser **62,75%** e o ciclo médio **17,85 dias**, sem filtros. Ao selecionar mês nessa página, quantidade, taxa e ciclo devem usar o período de conclusão.
 
 Escolha apenas demandas abertas: ciclo médio e taxa de entrega no prazo devem ficar vazios. Uma demanda aberta vencida conta em atraso mesmo que ainda não tenha data de início.
 

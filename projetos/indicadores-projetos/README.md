@@ -2,7 +2,7 @@
 
 Estudo demonstrativo com dados totalmente sintéticos para acompanhar um conjunto de demandas de BI, engenharia de dados, automação e processos. A fotografia do trabalho é de **31/12/2025**; os indicadores não usam a data atual do computador.
 
-Python e SQL produzem os dados tratados e os resultados. A imagem abaixo é uma visualização estática gerada pelo Python. Os arquivos de Power Query e DAX apoiam a montagem de um relatório no Power BI Desktop, ainda não incluído em `.pbix`.
+Python e SQL produzem os dados tratados e os resultados. O projeto [Projetos.pbip](../../powerbi/projetos/Projetos.pbip) inclui modelo, quinze medidas e três páginas editáveis. Sua estrutura foi validada; a execução e a aparência ainda precisam ser conferidas no Desktop. A imagem abaixo é uma visualização estática gerada pelo Python. O `.pbix` ainda não foi exportado.
 
 ![Demandas abertas em atraso por equipe em dados sintéticos](resultados/visao-geral.svg)
 
@@ -82,7 +82,15 @@ O gerador inclui cópias idênticas, equipe inexistente, uma conclusão sem data
 - [Resultados das consultas](resultados/consultas.json)
 - [Modelo SQLite](sql/modelo.sql)
 
-## Reproduzir e montar o Power BI
+## Abrir o projeto Power BI
+
+Baixe o repositório inteiro, abra [Projetos.pbip](../../powerbi/projetos/Projetos.pbip) e clique em Atualizar. Use autenticação Anônimo na fonte pública do GitHub. O [guia de abertura](../../powerbi/README.md) detalha as etapas.
+
+As páginas **Carteira**, **Prazos** e **Entregas** já estão definidas. Em Prazos, o mês seleciona a criação; em Entregas, as medidas usam a conclusão. Os filtros são independentes entre páginas. O calendário do modelo cobre os anos completos de 2025 e 2026.
+
+Além das medidas de carteira, o modelo inclui percentual do backlog em atraso e indicadores de quantidade, cumprimento de prazo e ciclo por data de entrega. Compare os valores com o roteiro de validação antes de salvar o `.pbix`.
+
+## Alternativa: reproduzir e montar manualmente
 
 1. Na raiz do repositório, execute `python pipeline.py`. O banco estará em `projetos/indicadores-projetos/resultados/analise.sqlite`.
 2. No Power BI Desktop, crie uma consulta em branco chamada `TabelasProjetos`, cole [carregar-tabelas.pq](powerbi/carregar-tabelas.pq) e ajuste `PastaDados` para `dados/tratados` deste estudo.
@@ -91,6 +99,6 @@ O gerador inclui cópias idênticas, equipe inexistente, uma conclusão sem data
 5. Marque `DimCalendario` como tabela de datas pela coluna `Data` e crie cada medida de [medidas.dax](powerbi/medidas.dax) separadamente.
 6. Importe o [tema](../../powerbi/tema.json). Formate contagens como inteiros, tempos com uma casa decimal e taxas como porcentagem.
 
-Sugestão de páginas: **Carteira** com total, concluídas, backlog, trabalho em progresso e abertas em atraso; **Prazos** com ciclo e entrega no prazo por equipe; **Entregas** com evolução por data de conclusão e detalhamento de demandas.
+O projeto editável já organiza as três páginas: **Carteira** com totais e atrasos, **Prazos** com tempos e taxas e **Entregas** com evolução por data de conclusão. A montagem manual permite praticar as etapas e personalizar o relatório.
 
 Os cartões devem reproduzir o resumo JSON. O M, o DAX, os relacionamentos e as interações precisam ser conferidos no Power BI Desktop antes de apresentar o painel como concluído.

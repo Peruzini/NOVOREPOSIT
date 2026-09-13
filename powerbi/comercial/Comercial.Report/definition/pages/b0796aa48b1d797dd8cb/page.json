@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "b0796aa48b1d797dd8cb",
+  "displayName": "3 | Vendedores",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "1b64c0bac7c76715b30d",
+      "target": "1a3e8ab70ac6e921e9f9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b64c0bac7c76715b30d",
+      "target": "f4d9cbfbbfe7f594cdf2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b64c0bac7c76715b30d",
+      "target": "2157ba67bc88e792f990",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b64c0bac7c76715b30d",
+      "target": "feecd96294e21d9721a6",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b64c0bac7c76715b30d",
+      "target": "0847f39ac7e2cf4e92fb",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0847f39ac7e2cf4e92fb",
+      "target": "1a3e8ab70ac6e921e9f9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0847f39ac7e2cf4e92fb",
+      "target": "f4d9cbfbbfe7f594cdf2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0847f39ac7e2cf4e92fb",
+      "target": "2157ba67bc88e792f990",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0847f39ac7e2cf4e92fb",
+      "target": "feecd96294e21d9721a6",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0847f39ac7e2cf4e92fb",
+      "target": "1b64c0bac7c76715b30d",
+      "type": "DataFilter"
+    }
+  ]
+}

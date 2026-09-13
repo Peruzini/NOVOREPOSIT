@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "380b7ce05b306af5af62",
+  "displayName": "2 | Lojas e categorias",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F8FAFC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "1c3fbf1a183bd196648e",
+      "target": "e3d2d8008475da86495d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1c3fbf1a183bd196648e",
+      "target": "84fcb29ec101378ab93c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1c3fbf1a183bd196648e",
+      "target": "a4223020f4dfd1a22ef2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1c3fbf1a183bd196648e",
+      "target": "01f2d3fc87788d982115",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1c3fbf1a183bd196648e",
+      "target": "4c12331d619c4cda13be",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4c12331d619c4cda13be",
+      "target": "e3d2d8008475da86495d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4c12331d619c4cda13be",
+      "target": "84fcb29ec101378ab93c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4c12331d619c4cda13be",
+      "target": "a4223020f4dfd1a22ef2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4c12331d619c4cda13be",
+      "target": "01f2d3fc87788d982115",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4c12331d619c4cda13be",
+      "target": "1c3fbf1a183bd196648e",
+      "type": "DataFilter"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Estudo demonstrativo com dados totalmente sintéticos de 2025: oito lojas em três estados, doze produtos e dezesseis vendedores. O objetivo é acompanhar receita, margem, ticket médio e participação de lojas e categorias.
 
-O tratamento em Python e as consultas SQL são executáveis. A visualização abaixo é gerada pelo Python; o dashboard Power BI ainda deve ser montado no Desktop usando os arquivos fornecidos.
+O tratamento em Python e as consultas SQL são executáveis. O projeto [Comercial.pbip](../../powerbi/comercial/Comercial.pbip) inclui modelo, medidas e três páginas editáveis. Sua estrutura foi validada; abertura, atualização e aparência ainda precisam ser conferidas no Desktop. A visualização abaixo é um gráfico estático gerado pelo Python.
 
 ![Receita líquida por loja em dados sintéticos](resultados/visao-geral.svg)
 
@@ -81,7 +81,13 @@ Na raiz do repositório, execute `python pipeline.py`. O banco local será criad
 
 Para executar uma consulta sem instalar outro programa, abra esse banco com o módulo `sqlite3` do Python ou um cliente SQLite. O pipeline também executa todas as consultas de `sql/consultas.sql` e grava suas respostas em `resultados/consultas.json`.
 
-## Montar o Power BI
+## Abrir o projeto Power BI
+
+Baixe o repositório inteiro e abra [Comercial.pbip](../../powerbi/comercial/Comercial.pbip). As páginas **Visão geral**, **Lojas e categorias** e **Vendedores** já têm filtros e indicadores configurados. Clique em Atualizar e use autenticação Anônimo na fonte pública do GitHub. Consulte o [guia completo](../../powerbi/README.md).
+
+O calendário do projeto amplia os CSVs para os anos completos de 2025 e 2026. Os quatro relacionamentos e as onze medidas já estão incluídos. O `.pbix` deve ser salvo no Desktop depois da conferência dos totais, dos filtros e da aparência.
+
+## Alternativa: montar manualmente
 
 1. Abra um relatório vazio no Power BI Desktop.
 2. Crie uma consulta em branco chamada `TabelasComerciais`, cole [carregar-tabelas.pq](powerbi/carregar-tabelas.pq) no Editor Avançado e ajuste `PastaDados` para a pasta local `dados/tratados` deste estudo.
@@ -90,7 +96,7 @@ Para executar uma consulta sem instalar outro programa, abra esse banco com o m�
 5. Crie separadamente as medidas de [medidas.dax](powerbi/medidas.dax). Formate valores em reais, contagens como inteiros e margem como porcentagem.
 6. Importe o [tema visual](../../powerbi/tema.json).
 
-Sugestão de páginas: **Visão geral** com receita, lucro, margem, ticket e evolução mensal; **Lojas e categorias** com comparativos e filtros; **Vendedores** com pedidos e receita, explicitando a limitação sobre produtividade.
+As mesmas três páginas estão definidas no projeto editável. A montagem manual serve para estudar as etapas ou criar uma versão própria.
 
 Confira os totais dos cartões com `resultados/resumo.json` antes de salvar o `.pbix`. Os trechos M e DAX são material para montagem e ainda precisam de validação no Power BI Desktop.
 
