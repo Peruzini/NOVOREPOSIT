@@ -2,6 +2,10 @@
 
 Estudos demonstrativos de Rafael Peruzini sobre indicadores, qualidade de dados e análise de negócio. Os exemplos usam dados totalmente sintéticos e não representam operações ou resultados de empresas reais.
 
+## Página de serviços
+
+A [primeira versão do site de serviços](site-servicos/README.md) reúne as ofertas, os estudos demonstrativos e contato por e-mail. Os arquivos HTML/CSS estão prontos para hospedagem; o site ainda não está publicado em um domínio.
+
 ## Estudos disponíveis
 
 | Estudo | Perguntas de negócio | Entrega |

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="362" viewBox="0 0 960 362">
+<rect width="960" height="362" fill="#F8FAFC"/>
+<g font-family="Arial, sans-serif" fill="#0F172A">
+<text x="32" y="46" font-size="25" font-weight="bold">Demandas abertas em atraso por equipe</text>
+<text x="32" y="76" font-size="15" fill="#475569">Estudo de portfólio • Dados sintéticos • Referência 2025</text>
+<text x="32" y="130" font-size="16">Automação</text>
+<rect x="255" y="108" width="470.0" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="130" text-anchor="end" font-size="16">21</text>
+<text x="32" y="178" font-size="16">Engenharia de Dados</text>
+<rect x="255" y="156" width="447.62" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="178" text-anchor="end" font-size="16">20</text>
+<text x="32" y="226" font-size="16">BI</text>
+<rect x="255" y="204" width="313.33" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="226" text-anchor="end" font-size="16">14</text>
+<text x="32" y="274" font-size="16">Processos</text>
+<rect x="255" y="252" width="290.95" height="30" rx="4" fill="#2563EB"/>
+<text x="920" y="274" text-anchor="end" font-size="16">13</text>
+<text x="32" y="334" font-size="13" fill="#475569">Visualização estática gerada pelo Python. O relatório Power BI é uma entrega separada.</text>
+</g></svg>
