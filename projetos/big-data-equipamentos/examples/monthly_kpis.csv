@@ -1,0 +1,4 @@
+year_month,unit,equipment_type,events,liters,operating_hours,liters_per_hour,cost_brl,high_consumption_events
+2025-01,Unidade 1,Caminhao,2,250,2,125,1500,1
+2025-01,Unidade 2,Escavadeira,1,40,1,40,240,0
+2025-01,Unidade 3,Carregadeira,1,70,1,70,420,0

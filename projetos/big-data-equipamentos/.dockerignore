@@ -1,0 +1,6 @@
+data
+artifacts
+artifacts-demo
+.venv
+__pycache__
+.git

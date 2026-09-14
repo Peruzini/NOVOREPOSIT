@@ -1,0 +1,18 @@
+{
+  "description": "Oráculo manual para examples/events.csv; não é benchmark.",
+  "bronze_rows": 10,
+  "silver_rows": 4,
+  "rejected_rows": 5,
+  "duplicate_rows": 1,
+  "liters": 360,
+  "operating_hours": 4,
+  "cost_brl": 2160,
+  "liters_per_hour": 90,
+  "high_consumption_events": 1,
+  "rejection_reasons": {
+    "INVALID_LITERS": 2,
+    "UNKNOWN_EQUIPMENT": 1,
+    "INVALID_TIMESTAMP": 1,
+    "INVALID_OPERATING_MINUTES": 1
+  }
+}
