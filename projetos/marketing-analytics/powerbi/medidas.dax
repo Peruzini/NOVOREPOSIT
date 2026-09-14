@@ -1,0 +1,61 @@
+Investimento =
+DIVIDE(SUM(FatoMarketing[InvestimentoCentavos]), 100)
+
+Receita Atribuida =
+DIVIDE(SUM(FatoMarketing[ReceitaCentavos]), 100)
+
+Impressoes =
+SUM(FatoMarketing[Impressoes])
+
+Cliques =
+SUM(FatoMarketing[Cliques])
+
+Leads =
+SUM(FatoMarketing[Leads])
+
+Oportunidades =
+SUM(FatoMarketing[Oportunidades])
+
+Clientes =
+SUM(FatoMarketing[Clientes])
+
+CTR =
+DIVIDE([Cliques], [Impressoes])
+
+CPC =
+DIVIDE([Investimento], [Cliques])
+
+CPL =
+DIVIDE([Investimento], [Leads])
+
+Taxa Clique Lead =
+DIVIDE([Leads], [Cliques])
+
+Taxa Lead Oportunidade =
+DIVIDE([Oportunidades], [Leads])
+
+Taxa Oportunidade Cliente =
+DIVIDE([Clientes], [Oportunidades])
+
+Taxa Lead Cliente =
+DIVIDE([Clientes], [Leads])
+
+CAC =
+DIVIDE([Investimento], [Clientes])
+
+ROAS =
+DIVIDE([Receita Atribuida], [Investimento])
+
+ROI Midia =
+DIVIDE([Receita Atribuida] - [Investimento], [Investimento])
+
+Receita por Cliente =
+DIVIDE([Receita Atribuida], [Clientes])
+
+Investimento Mes Anterior =
+CALCULATE([Investimento], DATEADD(DimCalendario[Data], -1, MONTH))
+
+Variacao Investimento Mensal =
+VAR Atual = [Investimento]
+VAR Anterior = [Investimento Mes Anterior]
+RETURN IF(NOT ISBLANK(Atual) && NOT ISBLANK(Anterior), DIVIDE(Atual - Anterior, Anterior))

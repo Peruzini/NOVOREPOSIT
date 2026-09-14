@@ -1,0 +1,9 @@
+CampanhaID,Campanha,CanalID,Objetivo
+CMP01,Search | Soluções BI,CAN01,Geração de leads
+CMP02,Search | Automação,CAN01,Geração de leads
+CMP03,Social | Conteúdo BI,CAN02,Geração de leads
+CMP04,Social | Remarketing,CAN02,Conversão
+CMP05,B2B | Dados & Analytics,CAN03,Geração de leads
+CMP06,B2B | Power BI,CAN03,Conversão
+CMP07,Newsletter | Conteúdo,CAN04,Nutrição
+CMP08,E-mail | Reativação,CAN04,Conversão
