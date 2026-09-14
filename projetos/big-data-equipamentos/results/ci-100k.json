@@ -1,0 +1,35 @@
+{
+  "project": "EquipAnalytics",
+  "validation_date": "2026-09-14",
+  "tested_code_commit": "7c6576f3c6260ab6c37392cfc13526fcc1440b44",
+  "workflow_run_url": "https://github.com/Peruzini/NOVOREPOSIT/actions/runs/34867957046",
+  "job_id": 104056443455,
+  "result": "success",
+  "tests": {
+    "passed": 7,
+    "elapsed_seconds": 17.025
+  },
+  "execution": {
+    "spark_version": "3.5.7",
+    "master": "local[2]",
+    "seed": 42,
+    "requested_unique_events": 100000,
+    "bronze_rows": 100200,
+    "silver_rows": 99698,
+    "rejected_rows": 302,
+    "duplicate_rows": 200,
+    "rejection_rate_after_dedup": 0.00302,
+    "rejection_reasons": {
+      "UNKNOWN_EQUIPMENT": 100,
+      "INVALID_LITERS": 100,
+      "INVALID_TIMESTAMP": 102
+    },
+    "elapsed_seconds_before_sql_exports": 11.002
+  },
+  "limits": [
+    "Execução em uma única máquina do GitHub Actions.",
+    "Tempo parcial do pipeline; não inclui instalação e exportações SQL.",
+    "Sem benchmark de 1 milhão ou 10 milhões de registros.",
+    "Sem implantação distribuída ou validação Power BI Desktop."
+  ]
+}

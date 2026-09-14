@@ -6,6 +6,26 @@ O código inclui testes automatizados e um workflow de GitHub Actions. O resulta
 
 Não foram executados benchmarks de 1 milhão ou 10 milhões de eventos, implantação em cluster, Docker ou renderização de um relatório no Power BI. Nenhum tempo de execução foi inventado.
 
+## Execução confirmada
+
+Em 14/09/2026, o [GitHub Actions — execução 34867957046](https://github.com/Peruzini/NOVOREPOSIT/actions/runs/34867957046) concluiu com sucesso os 7 testes e a demonstração de 100.000 eventos sintéticos. O código validado está no commit 7c6576f3c6260ab6c37392cfc13526fcc1440b44.
+
+| Medida da execução | Resultado observado |
+| --- | ---: |
+| Testes aprovados | 7 |
+| Eventos únicos solicitados | 100.000 |
+| Bronze com versões duplicadas | 100.200 |
+| Silver | 99.698 |
+| Rejeições | 302 |
+| Versões duplicadas | 200 |
+| Rejeição após deduplicação | 0,302% |
+
+Os rejeitados foram 102 timestamps inválidos, 100 equipamentos desconhecidos e 100 valores de litros inválidos. A contagem por prioridade também foi conferida independentemente a partir das regras de injeção dos defeitos.
+
+Spark 3.5.7, master local[2]. Os testes levaram 17,025 s; o temporizador parcial do pipeline registrou 11,002 s antes das exportações SQL. Esses tempos pertencem a uma única execução em runner GitHub e não são promessa de desempenho ou benchmark de cluster.
+
+O [registro persistente da evidência](../results/ci-100k.json) preserva os metadados essenciais; os artefatos completos do workflow têm retenção de 14 dias.
+
 ## Amostra controlada
 
 examples/events.csv contém 10 registros. examples/expected.json registra o oráculo manual:

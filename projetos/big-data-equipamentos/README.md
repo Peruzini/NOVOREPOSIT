@@ -10,6 +10,8 @@ Como investigar consumo elevado de equipamentos sem transformar registros invál
 
 *A imagem apresenta os resultados esperados dos 10 registros de exemplo. Não representa milhões de linhas processadas nem um dashboard executado no Power BI.*
 
+**Validação executada:** [7 testes aprovados e 100.000 eventos sintéticos processados](docs/validacao.md#execução-confirmada) em Spark local no GitHub Actions. Foram obtidos 99.698 eventos válidos, 302 rejeições e 200 versões duplicadas.
+
 ## O que este projeto demonstra
 
 - Geração de volume configurável com expressões nativas do Spark, sem carregar os eventos em uma lista Python.
