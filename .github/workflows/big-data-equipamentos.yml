@@ -1,0 +1,46 @@
+name: Big Data EquipAnalytics
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projetos/big-data-equipamentos/**'
+      - '.github/workflows/big-data-equipamentos.yml'
+  pull_request:
+    paths:
+      - 'projetos/big-data-equipamentos/**'
+      - '.github/workflows/big-data-equipamentos.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: projetos/big-data-equipamentos
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Unit and integration tests
+        run: python -m unittest discover -s tests -v
+      - name: Demonstrate 100k synthetic events
+        run: python pipeline.py --rows 100000 --partitions 4 --output data/ci-100k
+      - name: Upload execution evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: equipanalytics-evidence
+          path: |
+            projetos/big-data-equipamentos/data/ci-100k/metrics.json
+            projetos/big-data-equipamentos/data/ci-100k/exports
+          retention-days: 14

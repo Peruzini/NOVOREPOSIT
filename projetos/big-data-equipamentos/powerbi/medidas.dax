@@ -1,0 +1,16 @@
+// Crie cada medida separadamente na tabela FatoConsumo.
+Consumo Litros = SUM(FatoConsumo[liters])
+
+Custo Estimado = SUM(FatoConsumo[cost_brl])
+
+Horas Operacionais = SUM(FatoConsumo[operating_hours])
+
+Eventos = SUM(FatoConsumo[events])
+
+Consumo L por Hora = DIVIDE([Consumo Litros], [Horas Operacionais])
+
+Eventos com Alerta = SUM(FatoConsumo[high_consumption_events])
+
+Taxa de Alertas = DIVIDE([Eventos com Alerta], [Eventos])
+
+Custo por Hora = DIVIDE([Custo Estimado], [Horas Operacionais])

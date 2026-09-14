@@ -1,17 +1,22 @@
-# Portfólio Power BI — Rafael Peruzini
+# Portfólio de Dados — Power BI e Big Data | Rafael Peruzini
 
 Estudos demonstrativos de Rafael Peruzini sobre indicadores, qualidade de dados e análise de negócio. Os exemplos usam dados totalmente sintéticos e não representam operações ou resultados de empresas reais.
 
 ## Estudos disponíveis
 
-| Estudo | Perguntas de negócio | Projeto Power BI |
+| Estudo | Perguntas de negócio | Entrega |
 | --- | --- | --- |
 | [Análise comercial](projetos/analise-comercial/README.md) | Como evoluem a receita e a margem? Quais lojas e categorias concentram os resultados? | [Comercial.pbip](powerbi/comercial/Comercial.pbip): 3 páginas, 5 tabelas e 11 medidas DAX. |
 | [Indicadores de projetos](projetos/indicadores-projetos/README.md) | Qual é o backlog? Quantas demandas estão atrasadas? Como variam os prazos entre equipes? | [Projetos.pbip](powerbi/projetos/Projetos.pbip): 3 páginas, 3 tabelas e 15 medidas DAX. |
+| [EquipAnalytics — Big Data](projetos/big-data-equipamentos/README.md) | Como investigar consumo elevado e qualidade de dados de equipamentos? | PySpark, Parquet, Spark SQL, testes, notebook e agregados para Power BI. |
 
-**Estado das entregas:** os projetos editáveis `.pbip` incluem modelos, consultas Power Query, medidas DAX, filtros e páginas em PBIR. A estrutura foi verificada contra esquemas da Microsoft, com checagem de campos, relacionamentos e totais dos CSVs. A validação completa de abertura, atualização, cálculo DAX e aparência final ainda precisa ser concluída no Power BI Desktop. Não há `.pbix` nem capturas do Desktop nesta versão. As imagens nos estudos são gráficos estáticos gerados pelo Python.
+**Estado das entregas Power BI:** os projetos editáveis `.pbip` incluem modelos, consultas Power Query, medidas DAX, filtros e páginas em PBIR. A estrutura foi verificada contra esquemas da Microsoft, com checagem de campos, relacionamentos e totais dos CSVs. A validação completa de abertura, atualização, cálculo DAX e aparência final ainda precisa ser concluída no Power BI Desktop. Não há `.pbix` nem capturas do Desktop nesta versão. As imagens nos estudos são gráficos estáticos gerados pelo Python.
 
 **Revisão visual parcial:** uma captura da página Carteira confirmou os cartões e os dois gráficos sem filtros. Os ajustes de cor e de espaço do título, as demais páginas e as interações continuam pendentes de conferência. Os valores observados estão registrados no [roteiro de validação](docs/validacao-power-bi.md#revisão-visual-recebida--página-carteira).
+
+## Novo estudo: Big Data e análise operacional
+
+O [EquipAnalytics](projetos/big-data-equipamentos/README.md) demonstra geração sintética em volume configurável, camadas Bronze/Silver/Gold, deduplicação, quarentena e indicadores de consumo de equipamentos. Possui execução própria com PySpark; não é executado por `pipeline.py` da raiz. A prévia mostra uma amostra controlada, e os limites de validação e escala estão documentados no estudo.
 
 ## Abrir no Power BI
 
@@ -31,7 +36,7 @@ Comece pelos resultados e pelas perguntas do estudo que mais se aproxima do prob
 - [Roteiro de apresentação de um estudo](docs/roteiro-de-apresentacao.md)
 - [Passos para finalizar o Power BI](docs/como-publicar-power-bi.md)
 
-## Executar os estudos
+## Executar os dois estudos Power BI
 
 Requisito: Python 3.10 ou superior. O processamento usa apenas a biblioteca padrão do Python; não é necessário instalar pacotes.
 
@@ -56,6 +61,7 @@ Os CSVs e os resumos já versionados permitem examinar o material sem instalar P
 | `tests/` | Casos pequenos que verificam deduplicação, rejeições e definições dos indicadores |
 | `projetos/analise-comercial/` | Estudo de receita e margem |
 | `projetos/indicadores-projetos/` | Estudo de prazos, backlog e entregas |
+| `projetos/big-data-equipamentos/` | Estudo independente de Big Data, consumo operacional e qualidade com PySpark |
 | `powerbi/comercial/` | Relatório Comercial e seu modelo semântico |
 | `powerbi/projetos/` | Relatório Projetos e seu modelo semântico |
 | `powerbi/tema.json` | Tema visual compartilhado |
