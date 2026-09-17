@@ -1,0 +1,399 @@
+// Fleet Analytics — catálogo de medidas DAX
+// Convenção: medidas são organizadas por camada para facilitar leitura e manutenção.
+// Tabelas esperadas: DimData, DimEquipamento, FatoOperacao, FatoManutencao e FatoMeta.
+
+// ============================================================
+// 1. MEDIDAS-BASE
+// ============================================================
+
+Horas Calendario =
+SUM ( FatoOperacao[HorasCalendario] )
+
+Horas Disponiveis =
+SUM ( FatoOperacao[HorasDisponiveis] )
+
+Horas Operadas =
+SUM ( FatoOperacao[HorasOperadas] )
+
+Ciclos =
+SUM ( FatoOperacao[Ciclos] )
+
+Producao Total t =
+SUM ( FatoOperacao[Toneladas] )
+
+Combustivel L =
+SUM ( FatoOperacao[CombustivelLitros] )
+
+Horas Manutencao =
+SUM ( FatoManutencao[HorasParada] )
+
+Custo Manutencao =
+SUM ( FatoManutencao[CustoManutencao] )
+
+Falhas =
+CALCULATE (
+    COUNTROWS ( FatoManutencao ),
+    KEEPFILTERS ( FatoManutencao[FalhaFlag] = 1 )
+)
+
+Eventos Manutencao =
+COUNTROWS ( FatoManutencao )
+
+// ============================================================
+// 2. KPIs OPERACIONAIS
+// ============================================================
+
+Disponibilidade Fisica % =
+DIVIDE ( [Horas Disponiveis], [Horas Calendario] )
+
+Utilizacao % =
+DIVIDE ( [Horas Operadas], [Horas Disponiveis] )
+
+Produtividade t/h =
+DIVIDE ( [Producao Total t], [Horas Operadas] )
+
+Toneladas por Ciclo =
+DIVIDE ( [Producao Total t], [Ciclos] )
+
+Consumo L/t =
+DIVIDE ( [Combustivel L], [Producao Total t] )
+
+Consumo L/h =
+DIVIDE ( [Combustivel L], [Horas Operadas] )
+
+Custo Manutencao por Hora =
+DIVIDE ( [Custo Manutencao], [Horas Operadas] )
+
+Custo Manutencao por Tonelada =
+DIVIDE ( [Custo Manutencao], [Producao Total t] )
+
+MTBF h =
+DIVIDE ( [Horas Operadas], [Falhas] )
+
+MTTR h =
+VAR HorasCorretivas =
+    CALCULATE (
+        [Horas Manutencao],
+        KEEPFILTERS ( FatoManutencao[TipoManutencao] = "Corretiva" )
+    )
+RETURN
+    DIVIDE ( HorasCorretivas, [Falhas] )
+
+Taxa de Falha por 1000h =
+DIVIDE ( [Falhas] * 1000, [Horas Operadas] )
+
+// ============================================================
+// 3. METAS E DESVIOS
+// FatoMeta é relacionada a DimData. O filtro de tipo é propagado
+// com TREATAS para demonstrar transferência explícita de contexto.
+// ============================================================
+
+Meta Producao t =
+VAR TiposSelecionados =
+    VALUES ( DimEquipamento[TipoEquipamento] )
+RETURN
+    CALCULATE (
+        SUM ( FatoMeta[MetaProducaoTon] ),
+        TREATAS ( TiposSelecionados, FatoMeta[TipoEquipamento] )
+    )
+
+Meta Disponibilidade % =
+VAR TiposSelecionados =
+    VALUES ( DimEquipamento[TipoEquipamento] )
+RETURN
+    CALCULATE (
+        AVERAGE ( FatoMeta[MetaDisponibilidadePct] ),
+        TREATAS ( TiposSelecionados, FatoMeta[TipoEquipamento] )
+    )
+
+Meta Utilizacao % =
+VAR TiposSelecionados =
+    VALUES ( DimEquipamento[TipoEquipamento] )
+RETURN
+    CALCULATE (
+        AVERAGE ( FatoMeta[MetaUtilizacaoPct] ),
+        TREATAS ( TiposSelecionados, FatoMeta[TipoEquipamento] )
+    )
+
+Meta Consumo L/t =
+VAR TiposSelecionados =
+    VALUES ( DimEquipamento[TipoEquipamento] )
+RETURN
+    CALCULATE (
+        AVERAGE ( FatoMeta[MetaConsumoLPorTon] ),
+        TREATAS ( TiposSelecionados, FatoMeta[TipoEquipamento] )
+    )
+
+Aderencia Producao % =
+DIVIDE ( [Producao Total t], [Meta Producao t] )
+
+Gap Producao t =
+[Meta Producao t] - [Producao Total t]
+
+Gap Producao Positivo t =
+MAX ( 0, [Gap Producao t] )
+
+Desvio Disponibilidade pp =
+( [Disponibilidade Fisica %] - [Meta Disponibilidade %] ) * 100
+
+Desvio Utilizacao pp =
+( [Utilizacao %] - [Meta Utilizacao %] ) * 100
+
+Desvio Consumo L/t =
+[Consumo L/t] - [Meta Consumo L/t]
+
+// ============================================================
+// 4. INTELIGENCIA TEMPORAL
+// DimData[Data] deve ser uma tabela calendário marcada como Date Table.
+// ============================================================
+
+Producao MTD =
+TOTALMTD ( [Producao Total t], DimData[Data] )
+
+Producao YTD =
+TOTALYTD ( [Producao Total t], DimData[Data] )
+
+Producao Mes Anterior =
+CALCULATE (
+    [Producao Total t],
+    DATEADD ( DimData[Data], -1, MONTH )
+)
+
+Variacao Producao MoM % =
+DIVIDE (
+    [Producao Total t] - [Producao Mes Anterior],
+    [Producao Mes Anterior]
+)
+
+Producao Ano Anterior =
+CALCULATE (
+    [Producao Total t],
+    SAMEPERIODLASTYEAR ( DimData[Data] )
+)
+
+Variacao Producao YoY % =
+DIVIDE (
+    [Producao Total t] - [Producao Ano Anterior],
+    [Producao Ano Anterior]
+)
+
+Producao Rolling 30d =
+VAR DataMax = MAX ( DimData[Data] )
+RETURN
+    CALCULATE (
+        [Producao Total t],
+        DATESINPERIOD ( DimData[Data], DataMax, -30, DAY )
+    )
+
+Producao Rolling 90d =
+VAR DataMax = MAX ( DimData[Data] )
+RETURN
+    CALCULATE (
+        [Producao Total t],
+        DATESINPERIOD ( DimData[Data], DataMax, -90, DAY )
+    )
+
+Disponibilidade Rolling 30d =
+VAR DataMax = MAX ( DimData[Data] )
+RETURN
+    CALCULATE (
+        [Disponibilidade Fisica %],
+        DATESINPERIOD ( DimData[Data], DataMax, -30, DAY )
+    )
+
+// ============================================================
+// 5. RANKING E PARETO
+// ============================================================
+
+Ranking Equipamento Producao =
+IF (
+    ISINSCOPE ( DimEquipamento[Equipamento] ),
+    RANKX (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        [Producao Total t],
+        ,
+        DESC,
+        DENSE
+    )
+)
+
+Ranking Equipamento Horas Manutencao =
+IF (
+    ISINSCOPE ( DimEquipamento[Equipamento] ),
+    RANKX (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        [Horas Manutencao],
+        ,
+        DESC,
+        DENSE
+    )
+)
+
+Share Producao % =
+DIVIDE (
+    [Producao Total t],
+    CALCULATE (
+        [Producao Total t],
+        ALLSELECTED ( DimEquipamento[Equipamento] )
+    )
+)
+
+Pareto Horas Manutencao Acumulado % =
+VAR RankingAtual = [Ranking Equipamento Horas Manutencao]
+VAR BaseEquipamentos =
+    ADDCOLUMNS (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        "@Horas", CALCULATE ( [Horas Manutencao] )
+    )
+VAR HorasAcumuladas =
+    SUMX (
+        TOPN (
+            RankingAtual,
+            BaseEquipamentos,
+            [@Horas], DESC,
+            DimEquipamento[Equipamento], ASC
+        ),
+        [@Horas]
+    )
+VAR HorasTotais =
+    SUMX ( BaseEquipamentos, [@Horas] )
+RETURN
+    IF (
+        ISINSCOPE ( DimEquipamento[Equipamento] ),
+        DIVIDE ( HorasAcumuladas, HorasTotais )
+    )
+
+Classe Pareto Manutencao =
+VAR Acumulado = [Pareto Horas Manutencao Acumulado %]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( Acumulado ), BLANK (),
+        Acumulado <= 0.80, "A",
+        Acumulado <= 0.95, "B",
+        "C"
+    )
+
+// ============================================================
+// 6. SCORE DE CRITICIDADE
+// Requer as tabelas desconectadas definidas em tabelas-parametros.dax.
+// Normalização min-max é calculada dentro do contexto selecionado.
+// ============================================================
+
+Peso Disponibilidade % =
+DIVIDE ( SELECTEDVALUE ( PesoDisponibilidade[Valor], 35 ), 100 )
+
+Peso Falhas % =
+DIVIDE ( SELECTEDVALUE ( PesoFalhas[Valor], 20 ), 100 )
+
+Peso Custo % =
+DIVIDE ( SELECTEDVALUE ( PesoCusto[Valor], 25 ), 100 )
+
+Peso Gap Producao % =
+DIVIDE ( SELECTEDVALUE ( PesoGapProducao[Valor], 20 ), 100 )
+
+Score Baixa Disponibilidade =
+VAR Base =
+    ADDCOLUMNS (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        "@Valor", CALCULATE ( [Disponibilidade Fisica %] )
+    )
+VAR MinValor = MINX ( Base, [@Valor] )
+VAR MaxValor = MAXX ( Base, [@Valor] )
+VAR Atual = [Disponibilidade Fisica %]
+RETURN
+    DIVIDE ( MaxValor - Atual, MaxValor - MinValor, 0 )
+
+Score Falhas =
+VAR Base =
+    ADDCOLUMNS (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        "@Valor", CALCULATE ( [Falhas] )
+    )
+VAR MinValor = MINX ( Base, [@Valor] )
+VAR MaxValor = MAXX ( Base, [@Valor] )
+VAR Atual = [Falhas]
+RETURN
+    DIVIDE ( Atual - MinValor, MaxValor - MinValor, 0 )
+
+Score Custo =
+VAR Base =
+    ADDCOLUMNS (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        "@Valor", CALCULATE ( [Custo Manutencao] )
+    )
+VAR MinValor = MINX ( Base, [@Valor] )
+VAR MaxValor = MAXX ( Base, [@Valor] )
+VAR Atual = [Custo Manutencao]
+RETURN
+    DIVIDE ( Atual - MinValor, MaxValor - MinValor, 0 )
+
+Score Gap Producao =
+VAR Base =
+    ADDCOLUMNS (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        "@Valor", CALCULATE ( [Gap Producao Positivo t] )
+    )
+VAR MinValor = MINX ( Base, [@Valor] )
+VAR MaxValor = MAXX ( Base, [@Valor] )
+VAR Atual = [Gap Producao Positivo t]
+RETURN
+    DIVIDE ( Atual - MinValor, MaxValor - MinValor, 0 )
+
+Score Criticidade =
+VAR PesoDisp = [Peso Disponibilidade %]
+VAR PesoFalha = [Peso Falhas %]
+VAR PesoManut = [Peso Custo %]
+VAR PesoProducao = [Peso Gap Producao %]
+VAR SomaPesos = PesoDisp + PesoFalha + PesoManut + PesoProducao
+VAR ScorePonderado =
+      [Score Baixa Disponibilidade] * PesoDisp
+    + [Score Falhas] * PesoFalha
+    + [Score Custo] * PesoManut
+    + [Score Gap Producao] * PesoProducao
+RETURN
+    DIVIDE ( ScorePonderado, SomaPesos )
+
+Ranking Criticidade =
+IF (
+    ISINSCOPE ( DimEquipamento[Equipamento] ),
+    RANKX (
+        ALLSELECTED ( DimEquipamento[Equipamento] ),
+        [Score Criticidade],
+        ,
+        DESC,
+        DENSE
+    )
+)
+
+Faixa Criticidade =
+VAR Score = [Score Criticidade]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( Score ), BLANK (),
+        Score >= 0.75, "Muito Alta",
+        Score >= 0.50, "Alta",
+        Score >= 0.25, "Moderada",
+        "Baixa"
+    )
+
+// ============================================================
+// 7. DIAGNOSTICO DE CONTEXTO
+// Útil para demonstrar comportamento de filtros e depuração do relatório.
+// ============================================================
+
+Equipamentos Visiveis =
+COUNTROWS ( VALUES ( DimEquipamento[EquipamentoID] ) )
+
+Periodo Selecionado =
+VAR DataMin = MIN ( DimData[Data] )
+VAR DataMax = MAX ( DimData[Data] )
+RETURN
+    FORMAT ( DataMin, "dd/MM/yyyy" ) & " a " & FORMAT ( DataMax, "dd/MM/yyyy" )
+
+Titulo Dinamico Frota =
+VAR Tipo = SELECTEDVALUE ( DimEquipamento[TipoEquipamento], "Todos os tipos" )
+VAR Centro = SELECTEDVALUE ( DimEquipamento[CentroCusto], "Todos os centros" )
+RETURN
+    "Fleet Analytics | " & Tipo & " | " & Centro
