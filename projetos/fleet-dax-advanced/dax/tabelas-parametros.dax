@@ -1,0 +1,35 @@
+// Tabelas calculadas desconectadas para simulação de pesos.
+// Criar em Modelagem > Nova tabela no Power BI Desktop.
+
+PesoDisponibilidade =
+SELECTCOLUMNS (
+    GENERATESERIES ( 0, 100, 5 ),
+    "Valor", [Value]
+)
+
+PesoFalhas =
+SELECTCOLUMNS (
+    GENERATESERIES ( 0, 100, 5 ),
+    "Valor", [Value]
+)
+
+PesoCusto =
+SELECTCOLUMNS (
+    GENERATESERIES ( 0, 100, 5 ),
+    "Valor", [Value]
+)
+
+PesoGapProducao =
+SELECTCOLUMNS (
+    GENERATESERIES ( 0, 100, 5 ),
+    "Valor", [Value]
+)
+
+// Valores padrão usados pelas medidas quando não há seleção:
+// Disponibilidade = 35%
+// Falhas = 20%
+// Custo = 25%
+// Gap de produção = 20%
+//
+// As tabelas permanecem SEM relacionamento com o modelo.
+// Cada segmentador deve usar a coluna [Valor] da respectiva tabela.
