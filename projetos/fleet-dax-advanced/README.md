@@ -10,6 +10,21 @@ O projeto possui uma versão editável em **Power BI Project (PBIP)**:
 
 [`../../powerbi/fleet/FleetAnalytics.pbip`](../../powerbi/fleet/FleetAnalytics.pbip)
 
+> **Importante:** não baixe somente o arquivo `FleetAnalytics.pbip`. O formato PBIP referencia arquivos externos do projeto e precisa ser aberto junto das pastas `FleetAnalytics.Report` e `FleetAnalytics.SemanticModel`. Baixe/extrate o repositório completo e mantenha os três itens dentro de `powerbi/fleet/` antes de abrir o `.pbip` no Power BI Desktop.
+
+A estrutura esperada é:
+
+```text
+powerbi/fleet/
+├── FleetAnalytics.pbip
+├── FleetAnalytics.Report/
+│   ├── definition.pbir
+│   └── definition/
+└── FleetAnalytics.SemanticModel/
+    ├── definition.pbism
+    └── model.bim
+```
+
 O modelo é autossuficiente: a massa demonstrativa de 2025–2026 é gerada no próprio Power Query, portanto o PBIP não depende de arquivos privados, credenciais ou bases corporativas para construir o cenário.
 
 ### Páginas
