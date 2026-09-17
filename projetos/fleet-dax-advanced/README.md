@@ -1,122 +1,128 @@
 # Fleet Analytics — Power BI + DAX Avançado
 
-Estudo demonstrativo de Business Intelligence aplicado à gestão de uma frota de equipamentos pesados. O objetivo é mostrar modelagem dimensional, definição de KPIs operacionais e uso de DAX avançado em um cenário próximo de operações industriais e mineração.
+Estudo demonstrativo de Business Intelligence aplicado à gestão de uma frota de equipamentos pesados. O projeto foi desenhado para demonstrar modelagem dimensional, Power Query, indicadores operacionais e DAX avançado em um cenário próximo de mineração e operações industriais.
 
 > **Dados 100% sintéticos.** O projeto não contém dados, indicadores ou resultados de empresas reais.
 
+## Entrega Power BI
+
+O projeto possui uma versão editável em **Power BI Project (PBIP)**:
+
+[`../../powerbi/fleet/FleetAnalytics.pbip`](../../powerbi/fleet/FleetAnalytics.pbip)
+
+O modelo é autossuficiente: a massa demonstrativa de 2025–2026 é gerada no próprio Power Query, portanto o PBIP não depende de arquivos privados, credenciais ou bases corporativas para construir o cenário.
+
+### Páginas
+
+1. **Visão Executiva** — produção, aderência à meta e custo por tonelada;
+2. **Performance da Frota** — utilização, produtividade e ranking de equipamentos;
+3. **Manutenção & Pareto** — falhas, horas de manutenção, custo e participação nas perdas;
+4. **Criticidade** — índice composto, ranking e classe de criticidade.
+
+A versão PBIP contém um núcleo de **34 medidas DAX incorporadas ao modelo semântico**. O catálogo técnico em [`dax/medidas-avancadas.dax`](dax/medidas-avancadas.dax) ultrapassa 50 medidas e inclui variações e exemplos adicionais para estudo e evolução do relatório.
+
 ## Problema de negócio
 
-Uma operação precisa acompanhar produtividade, disponibilidade, utilização, manutenção e consumo da frota e responder perguntas como:
+O cenário procura responder perguntas como:
 
-- quais equipamentos concentram perda de disponibilidade e horas de manutenção?
-- a produção está aderente às metas por período e tipo de equipamento?
-- quais ativos apresentam pior combinação entre disponibilidade, falhas, custo e perda produtiva?
-- como produção, disponibilidade e utilização evoluem contra mês anterior, ano anterior e janelas móveis?
-- qual parcela das perdas está concentrada nos equipamentos mais críticos?
-
-## O que este case demonstra
-
-- modelo estrela com múltiplas tabelas fato;
-- contexto de filtro e transição de contexto em DAX;
-- `CALCULATE`, `FILTER`, `ALL`, `ALLSELECTED`, `REMOVEFILTERS` e `KEEPFILTERS`;
-- iteradores como `SUMX`, `AVERAGEX`, `MINX`, `MAXX` e `RANKX`;
-- tabelas virtuais com `TOPN`, `ADDCOLUMNS` e `SUMMARIZE`;
-- inteligência temporal com MTD/YTD, períodos anteriores e rolling windows;
-- Pareto de perdas e ranking dinâmico;
-- cálculo de MTBF e MTTR;
-- parâmetros desconectados para ponderação de criticidade;
-- score normalizado de criticidade da frota;
-- separação entre medidas-base, KPIs e medidas analíticas.
+- quais equipamentos concentram perdas de disponibilidade e manutenção?
+- a produção está aderente às metas?
+- quais ativos apresentam a pior combinação de disponibilidade, falhas, custo e perda operacional?
+- como produção e desempenho variam entre períodos?
+- qual é o ranking de equipamentos por produção e por criticidade?
 
 ## Modelo dimensional
 
+O modelo utiliza dimensões compartilhadas por múltiplas tabelas fato:
+
 ```text
-                  DimData
-                     |
-                     | 1:N
-                     |
-          +----------+-----------+
-          |                      |
-          v                      v
-   FatoOperacao            FatoManutencao
-          ^                      ^
-          |                      |
-          +------ 1:N -----------+
-                  |
-           DimEquipamento
-                  |
-                  +-------------------+
-                                      |
-                                 FatoMeta
+                     DimData
+                        |
+       +----------------+----------------+
+       |                |                |
+       v                v                v
+ FatoOperacao    FatoManutencao   FatoAbastecimento
+       ^                ^                ^
+       |                |                |
+       +---------- DimEquipamento -------+
+                        |
+                        v
+                     FatoMeta
 ```
 
-### Dimensões
+### Tabelas principais
 
-- `DimData`: calendário contínuo, ano, mês, trimestre e chaves de ordenação.
-- `DimEquipamento`: equipamento, tipo, modelo, capacidade, centro de custo e ano de fabricação.
+- `DimData` — calendário contínuo de 2025 e 2026;
+- `DimEquipamento` — equipamento, tipo, modelo e área;
+- `FatoOperacao` — produção, horas operadas e horas-calendário;
+- `FatoManutencao` — eventos, tipo de parada, duração e custo;
+- `FatoAbastecimento` — litros e custo de combustível;
+- `FatoMeta` — meta diária por equipamento;
+- `Medidas` — tabela técnica para centralizar as medidas DAX.
 
-### Fatos
+Veja também [`docs/modelo-dimensional.md`](docs/modelo-dimensional.md).
 
-- `FatoOperacao`: horas-calendário, horas disponíveis, horas operadas, ciclos, toneladas e combustível.
-- `FatoManutencao`: eventos de manutenção, sistema afetado, duração da parada, custo e indicador de falha.
-- `FatoMeta`: metas diárias por tipo de equipamento para produção, disponibilidade, utilização e consumo específico.
+## DAX incorporado ao PBIP
 
-Veja também [modelo-dimensional.md](docs/modelo-dimensional.md).
+Entre as medidas disponíveis no modelo estão:
 
-## KPIs principais
+- Produção Total;
+- Disponibilidade Física %;
+- Utilização %;
+- Produtividade t/h;
+- Consumo L/t;
+- Custo Combustível;
+- Custo Manutenção;
+- Custo Total;
+- Custo por Tonelada;
+- Falhas;
+- MTBF e MTTR;
+- Meta Produção e Aderência Meta %;
+- Produção Mês Anterior e Variação MoM %;
+- Produção Ano Anterior e Variação YoY %;
+- Rolling 30 e 90 dias;
+- Ranking Equipamento;
+- Participação e perdas acumuladas;
+- scores normalizados de disponibilidade, falhas, custo e perda;
+- Índice de Criticidade;
+- Ranking e Classe de Criticidade.
 
-| Indicador | Regra resumida |
-| --- | --- |
-| Disponibilidade Física | horas disponíveis / horas calendário |
-| Utilização | horas operadas / horas disponíveis |
-| Produtividade | toneladas / horas operadas |
-| Consumo específico | litros / toneladas |
-| MTBF | horas operadas / número de falhas |
-| MTTR | horas de manutenção corretiva / falhas |
-| Aderência à produção | produção realizada / meta de produção |
-| Score de criticidade | combinação normalizada de disponibilidade, falhas, custo e gap produtivo |
+O modelo usa funções e padrões como `CALCULATE`, `DATEADD`, `DATESINPERIOD`, `DIVIDE`, `RANKX`, `ALLSELECTED`, `MAXX`, `SUMX`, `TOPN`, variáveis e contexto dinâmico de filtro.
 
-## DAX avançado
+## Índice de criticidade
 
-O catálogo principal está em [`dax/medidas-avancadas.dax`](dax/medidas-avancadas.dax). As tabelas desconectadas utilizadas pelo score estão em [`dax/tabelas-parametros.dax`](dax/tabelas-parametros.dax).
+A versão executável do PBIP utiliza a seguinte ponderação-base:
 
-O arquivo foi organizado em blocos:
+| Dimensão | Peso |
+| --- | ---: |
+| Baixa disponibilidade | 35% |
+| Custo por tonelada | 25% |
+| Falhas | 20% |
+| Horas de perda/manutenção | 20% |
 
-1. medidas-base;
-2. KPIs operacionais;
-3. metas e desvios;
-4. inteligência temporal;
-5. ranking e Pareto;
-6. normalização e score de criticidade;
-7. medidas de diagnóstico de contexto.
+Cada componente é normalizado no contexto selecionado antes de compor o índice. Isso permite comparar ativos com métricas de escalas diferentes e gerar um ranking relativo da frota.
 
-## Score de criticidade
+O arquivo [`dax/tabelas-parametros.dax`](dax/tabelas-parametros.dax) documenta a evolução para pesos controlados por tabelas desconectadas/What-if Parameters.
 
-O destaque do estudo é um índice dinâmico que combina quatro dimensões:
+## Dados e reprodutibilidade
 
-- baixa disponibilidade;
-- quantidade de falhas;
-- custo de manutenção;
-- gap de produção contra meta.
-
-Os pesos são controlados por tabelas desconectadas e podem ser alterados pelo usuário no relatório. O score final é recalculado no contexto atual de filtros e gera um ranking dinâmico da frota.
-
-## Dados sintéticos reproduzíveis
-
-Execute:
+Além do PBIP autossuficiente, o estudo mantém um gerador Python independente:
 
 ```bash
 python projetos/fleet-dax-advanced/scripts/gerar_dados.py
 ```
 
-O script usa apenas a biblioteca padrão do Python e gera os CSVs dentro de `projetos/fleet-dax-advanced/dados/` com semente fixa, permitindo reproduzir o mesmo cenário.
+Esse script usa somente a biblioteca padrão e permite gerar CSVs sintéticos para testar o mesmo domínio fora do Power BI.
+
+## SQL
+
+[`sql/analises.sql`](sql/analises.sql) contém consultas analíticas complementares, incluindo agregações e funções de janela para examinar o cenário também pela camada SQL.
 
 ## Estrutura
 
 ```text
-fleet-dax-advanced/
+projetos/fleet-dax-advanced/
 ├── README.md
-├── dados/                 # CSVs gerados pelo script
 ├── dax/
 │   ├── medidas-avancadas.dax
 │   └── tabelas-parametros.dax
@@ -126,17 +132,17 @@ fleet-dax-advanced/
 │   └── gerar_dados.py
 └── sql/
     └── analises.sql
+
+powerbi/fleet/
+├── FleetAnalytics.pbip
+├── FleetAnalytics.Report/
+└── FleetAnalytics.SemanticModel/
 ```
 
-## Próxima etapa no Power BI
+## Estado de validação
 
-A versão de código e documentação foi preparada para que o modelo seja montado no Power BI Desktop/PBIP. O próximo passo visual é criar quatro páginas:
-
-1. **Visão Executiva** — produção, disponibilidade, utilização, custo e aderência às metas;
-2. **Performance da Frota** — ranking, tendência e comparação entre equipamentos;
-3. **Manutenção & Pareto** — MTBF, MTTR, sistemas críticos e perdas acumuladas;
-4. **Criticidade** — parâmetros de peso, score normalizado, ranking e matriz de risco.
+A estrutura PBIP/PBIR e os arquivos JSON foram montados no mesmo padrão técnico dos outros projetos do portfólio. Ainda é necessária a **validação final no Power BI Desktop** para confirmar atualização das consultas M, cálculo das medidas, aparência e interações dos visuais após a abertura local.
 
 ## Competências demonstradas
 
-`Power BI` · `DAX` · `Power Query` · `Modelagem Dimensional` · `SQL` · `Python` · `KPIs` · `Time Intelligence` · `Pareto` · `What-if Analysis` · `Data Analytics`
+`Power BI` · `DAX` · `Power Query/M` · `Modelagem Dimensional` · `SQL` · `Python` · `KPIs` · `Time Intelligence` · `RANKX` · `TOPN` · `ALLSELECTED` · `MTBF/MTTR` · `Analytics`
