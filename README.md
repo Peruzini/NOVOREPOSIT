@@ -9,7 +9,7 @@ Estudos demonstrativos sobre indicadores, qualidade de dados, modelagem e análi
 | Revisar medidas e modelagem de um painel | [Fleet Analytics](projetos/fleet-dax-advanced/README.md): modelo, DAX e regras operacionais |
 | Conferir indicadores em uma mudança de ambiente | [Referências de validação](docs/validacao-power-bi.md): recortes e totais esperados dos estudos comercial e de demandas |
 | Preparar dados confiáveis para análise | [EquipAnalytics](projetos/big-data-equipamentos/README.md): rejeições, deduplicação e reconciliação |
-| Planejar consultas analíticas por IA no Snowflake | [Proposta de evolução](docs/evolucao-bi-snowflake.md): escopo e critérios de aceite; implementação ainda não realizada neste portfólio |
+| Preparar consultas analíticas por IA no Snowflake | [Piloto Fleet](snowflake/fleet/README.md): código, scripts Cortex e referências locais; validação Desktop/Snowflake pendente |
 
 ## Estudos disponíveis
 
@@ -20,6 +20,10 @@ Estudos demonstrativos sobre indicadores, qualidade de dados, modelagem e análi
 | [Indicadores de projetos](projetos/indicadores-projetos/README.md) | Qual é o backlog? Quantas demandas estão atrasadas? Como variam os prazos entre equipes? | [Projetos.pbip](powerbi/projetos/Projetos.pbip): 3 páginas, 3 tabelas e 15 medidas DAX. |
 | [Marketing Analytics](projetos/marketing-analytics/README.md) | Quais canais combinam aquisição e eficiência de mídia? | Pipeline Python, SQL, dados sintéticos, medidas DAX e resultados esperados; PBIP ainda não versionado. |
 | [EquipAnalytics — Big Data](projetos/big-data-equipamentos/README.md) | Como investigar consumo elevado e qualidade de dados de equipamentos? | PySpark, Parquet, Spark SQL, testes e processamento de eventos sintéticos. |
+
+## Piloto Power BI → SQL → Cortex
+
+O [piloto Fleet](snowflake/fleet/README.md) acrescenta consultas de referência, um gerador de dados alinhado às regras desta versão do PBIP, scripts Snowflake e uma definição de agente Cortex. A referência local passou por 11 testes em Python/SQLite. O piloto ainda requer execução no Power BI Desktop e no Snowflake antes de ser apresentado como uma migração validada.
 
 ## Destaque: Fleet Analytics
 

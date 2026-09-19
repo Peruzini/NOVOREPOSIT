@@ -42,15 +42,15 @@ O PBIP e o catálogo DAX representam versões diferentes do estudo. O catálogo 
 
 | Regra | Modelo PBIP atual | Catálogo DAX |
 | --- | --- | --- |
-| Falhas | Contagem de linhas de manutenção | Contagem filtrada por `FalhaFlag = 1` |
-| MTTR | Horas de manutenção / contagem de eventos | Horas corretivas / falhas sinalizadas |
+| Falhas | Contagem de eventos com `TipoParada = "Corretiva"`; zero sem falhas | Contagem filtrada por `FalhaFlag = 1` |
+| MTTR | Horas corretivas / eventos corretivos | Horas corretivas / falhas sinalizadas |
 | Componente de custo da criticidade | Custo por tonelada, normalizado pelo máximo selecionado | Custo de manutenção, normalizado por min-max |
 | Componente de perda da criticidade | Horas de manutenção | Gap positivo de produção |
 | Pesos | Fixos no índice | Medidas baseadas em tabelas de parâmetros |
 
 Essas diferenças afetam a interpretação dos resultados. Antes de uma migração ou exposição das métricas a um agente de IA, definir uma regra canônica e conferir resultados por equipamento e período. Esta comparação é uma revisão estática dos arquivos; não substitui execução no Power BI Desktop.
 
-Veja a [proposta de evolução para Snowflake e IA](../../docs/evolucao-bi-snowflake.md).
+Veja o [piloto Snowflake/Cortex](../../snowflake/fleet/README.md), com correções no PBIP, contrato de métricas, 11 testes locais e resultados de referência para conferência no Desktop. A implantação Snowflake e a validação DAX permanecem pendentes.
 
 ## Problema de negócio
 
@@ -131,7 +131,7 @@ A versão executável do PBIP utiliza a seguinte ponderação-base:
 | Falhas | 20% |
 | Horas de perda/manutenção | 20% |
 
-Cada componente é normalizado no contexto selecionado antes de compor o índice. Isso permite comparar ativos com métricas de escalas diferentes e gerar um ranking relativo da frota.
+No PBIP, baixa disponibilidade é `1 - disponibilidade`; custo por tonelada, falhas corretivas e horas de manutenção são divididos pelos respectivos máximos no contexto selecionado. Esses componentes usam a regra documentada no [contrato de métricas](../../snowflake/fleet/contrato-de-metricas.md); não são todos normalizados por min-max.
 
 O arquivo [`dax/tabelas-parametros.dax`](dax/tabelas-parametros.dax) documenta a evolução para pesos controlados por tabelas desconectadas/What-if Parameters.
 

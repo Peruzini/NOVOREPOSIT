@@ -1,0 +1,20 @@
+-- Execute na Exibição de consulta DAX do PBIP desta branch, após atualizar.
+-- Compare com evaluation/local-expected.json > 01_january_2026.
+EVALUATE
+CALCULATETABLE(
+    ROW(
+        "PRODUCAO_TON", [Produção Total],
+        "HORAS_OPERACAO", [Horas Operação],
+        "HORAS_MANUTENCAO", [Horas Manutenção],
+        "HORAS_CORRETIVAS", CALCULATE([Horas Manutenção], FatoManutencao[TipoParada] = "Corretiva"),
+        "FALHAS", [Falhas],
+        "CUSTO_TOTAL", [Custo Total],
+        "CUSTO_POR_TONELADA", [Custo por Tonelada],
+        "DISPONIBILIDADE", [Disponibilidade Física %],
+        "UTILIZACAO", [Utilização %],
+        "MTTR", [MTTR],
+        "MTBF", [MTBF],
+        "ADERENCIA_META", [Aderência Meta %]
+    ),
+    DATESBETWEEN(DimData[Data], DATE(2026,1,1), DATE(2026,1,31))
+)

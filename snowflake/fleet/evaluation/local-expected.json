@@ -1,0 +1,117 @@
+{
+  "01_january_2026": [
+    {
+      "PRODUCAO_TON": 42950.0,
+      "HORAS_OPERACAO": 4576.0,
+      "HORAS_MANUTENCAO": 75.0,
+      "HORAS_CORRETIVAS": 45.0,
+      "FALHAS": 9.0,
+      "CUSTO_TOTAL": 1877658.28,
+      "CUSTO_POR_TONELADA": 43.717305704307336,
+      "DISPONIBILIDADE": 0.9873991935483871,
+      "UTILIZACAO": 0.7786285519823039,
+      "MTTR": 5.0,
+      "MTBF": 508.44444444444446,
+      "ADERENCIA_META": 0.9812208717901855
+    }
+  ],
+  "02_equipment_january": [
+    {
+      "EQUIPAMENTO_ID": "EQ-01",
+      "PRODUCAO_TON": 4475.7,
+      "CUSTO_POR_TONELADA": 45.35268226199254,
+      "FALHAS": 0.0,
+      "MTTR": null
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-02",
+      "PRODUCAO_TON": 4730.8,
+      "CUSTO_POR_TONELADA": 47.016627208928725,
+      "FALHAS": 3.0,
+      "MTTR": 6.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-03",
+      "PRODUCAO_TON": 4934.1,
+      "CUSTO_POR_TONELADA": 44.46580328732696,
+      "FALHAS": 1.0,
+      "MTTR": 4.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-04",
+      "PRODUCAO_TON": 5207.0,
+      "CUSTO_POR_TONELADA": 43.25161897445746,
+      "FALHAS": 1.0,
+      "MTTR": 3.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-05",
+      "PRODUCAO_TON": 5481.1,
+      "CUSTO_POR_TONELADA": 44.49114958676178,
+      "FALHAS": 1.0,
+      "MTTR": 7.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-06",
+      "PRODUCAO_TON": 5763.0,
+      "CUSTO_POR_TONELADA": 42.856828040950894,
+      "FALHAS": 2.0,
+      "MTTR": 4.5
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-07",
+      "PRODUCAO_TON": 6066.4,
+      "CUSTO_POR_TONELADA": 41.67848476856126,
+      "FALHAS": 0.0,
+      "MTTR": null
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-08",
+      "PRODUCAO_TON": 6291.9,
+      "CUSTO_POR_TONELADA": 41.95146458144598,
+      "FALHAS": 1.0,
+      "MTTR": 4.0
+    }
+  ],
+  "03_top5_maintenance": [
+    {
+      "EQUIPAMENTO_ID": "EQ-02",
+      "EQUIPAMENTO": "Caminhão 02",
+      "HORAS_MANUTENCAO": 18.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-05",
+      "EQUIPAMENTO": "Escavadeira 01",
+      "HORAS_MANUTENCAO": 14.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-06",
+      "EQUIPAMENTO": "Escavadeira 02",
+      "HORAS_MANUTENCAO": 9.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-08",
+      "EQUIPAMENTO": "Trator 01",
+      "HORAS_MANUTENCAO": 9.0
+    },
+    {
+      "EQUIPAMENTO_ID": "EQ-07",
+      "EQUIPAMENTO": "Carregadeira 01",
+      "HORAS_MANUTENCAO": 8.0
+    }
+  ],
+  "04_month_comparison": [
+    {
+      "ATUAL": 42950.0,
+      "ANTERIOR": 42927.8,
+      "VARIACAO_MOM": 0.0005171473963258562
+    }
+  ],
+  "05_empty_period": [
+    {
+      "PRODUCAO_TON": null,
+      "FALHAS": 0,
+      "MTTR": null
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Modelo dimensional — Fleet Analytics
 
+> Este documento descreve o cenário do catálogo didático/gerador Python original. Para o PBIP e a reconciliação Snowflake desta versão, use o [contrato do piloto](../../../snowflake/fleet/contrato-de-metricas.md); os esquemas e alguns indicadores diferem.
+
 ## Grão das tabelas
 
 | Tabela | Grão |
