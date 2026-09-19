@@ -36,6 +36,22 @@ O modelo é autossuficiente: a massa demonstrativa de 2025–2026 é gerada no p
 
 A versão PBIP contém um núcleo de **34 medidas DAX incorporadas ao modelo semântico**. O catálogo técnico em [`dax/medidas-avancadas.dax`](dax/medidas-avancadas.dax) ultrapassa 50 medidas e inclui variações e exemplos adicionais para estudo e evolução do relatório.
 
+## Escopo das duas implementações
+
+O PBIP e o catálogo DAX representam versões diferentes do estudo. O catálogo é uma referência para evolução e exige adaptação de tabelas, colunas e regras antes de ser usado no modelo atual.
+
+| Regra | Modelo PBIP atual | Catálogo DAX |
+| --- | --- | --- |
+| Falhas | Contagem de linhas de manutenção | Contagem filtrada por `FalhaFlag = 1` |
+| MTTR | Horas de manutenção / contagem de eventos | Horas corretivas / falhas sinalizadas |
+| Componente de custo da criticidade | Custo por tonelada, normalizado pelo máximo selecionado | Custo de manutenção, normalizado por min-max |
+| Componente de perda da criticidade | Horas de manutenção | Gap positivo de produção |
+| Pesos | Fixos no índice | Medidas baseadas em tabelas de parâmetros |
+
+Essas diferenças afetam a interpretação dos resultados. Antes de uma migração ou exposição das métricas a um agente de IA, definir uma regra canônica e conferir resultados por equipamento e período. Esta comparação é uma revisão estática dos arquivos; não substitui execução no Power BI Desktop.
+
+Veja a [proposta de evolução para Snowflake e IA](../../docs/evolucao-bi-snowflake.md).
+
 ## Problema de negócio
 
 O cenário procura responder perguntas como:

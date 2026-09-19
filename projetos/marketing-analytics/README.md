@@ -90,9 +90,9 @@ marketing-analytics/
 
 ## Power BI
 
-O projeto PBIP fica em `powerbi/marketing/Marketing.pbip` na raiz do repositório.
+A entrega atual inclui dados sintéticos, pipeline Python, SQL, resultados esperados e medidas DAX em [powerbi/medidas.dax](powerbi/medidas.dax). **Ainda não há um arquivo PBIP de Marketing versionado neste repositório.**
 
-Páginas previstas:
+Páginas propostas para uma futura implementação no Power BI:
 
 1. **Visão geral** — investimento, receita, leads, clientes, ROAS e evolução mensal.
 2. **Aquisição** — CTR, CPC, CPL, conversão e volume por canal.
@@ -102,7 +102,7 @@ As medidas DAX também estão documentadas em `powerbi/medidas.dax`.
 
 ### Limite de validação
 
-A estrutura do PBIP pode ser validada por código, mas a abertura, atualização, cálculo DAX, interações e aparência final precisam ser confirmadas no Power BI Desktop. Não há alegação de que o `.pbix` foi publicado no Power BI Service.
+As medidas DAX são material de implementação e ainda precisam de validação no motor do Power BI. Quando o relatório for criado, conferir abertura, atualização, calendário, cálculos, interações e aparência no Power BI Desktop. Não há relatório publicado no Power BI Service documentado nesta entrega.
 
 ## SQL
 

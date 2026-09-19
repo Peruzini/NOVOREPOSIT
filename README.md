@@ -1,6 +1,15 @@
-# Portfólio de Dados — Power BI e Big Data | Rafael Peruzini
+# Portfólio de Dados — Power BI, SQL e Qualidade de Dados | Rafael Peruzini
 
 Estudos demonstrativos sobre indicadores, qualidade de dados, modelagem e análise de negócio. Os exemplos usam dados sintéticos e não representam operações ou resultados de empresas reais.
+
+## Comece pela necessidade de negócio
+
+| Necessidade | Evidência para avaliação |
+| --- | --- |
+| Revisar medidas e modelagem de um painel | [Fleet Analytics](projetos/fleet-dax-advanced/README.md): modelo, DAX e regras operacionais |
+| Conferir indicadores em uma mudança de ambiente | [Referências de validação](docs/validacao-power-bi.md): recortes e totais esperados dos estudos comercial e de demandas |
+| Preparar dados confiáveis para análise | [EquipAnalytics](projetos/big-data-equipamentos/README.md): rejeições, deduplicação e reconciliação |
+| Planejar consultas analíticas por IA no Snowflake | [Proposta de evolução](docs/evolucao-bi-snowflake.md): escopo e critérios de aceite; implementação ainda não realizada neste portfólio |
 
 ## Estudos disponíveis
 
@@ -9,6 +18,7 @@ Estudos demonstrativos sobre indicadores, qualidade de dados, modelagem e análi
 | [Fleet Analytics — Power BI + DAX Avançado](projetos/fleet-dax-advanced/README.md) | Quais equipamentos concentram perdas? Como produção, disponibilidade, falhas e custo determinam a criticidade da frota? | [FleetAnalytics.pbip](powerbi/fleet/FleetAnalytics.pbip): 4 páginas, modelo estrela, Power Query autossuficiente, 34 medidas DAX incorporadas e catálogo técnico com 50+ medidas. |
 | [Análise comercial](projetos/analise-comercial/README.md) | Como evoluem receita e margem? Quais lojas e categorias concentram os resultados? | [Comercial.pbip](powerbi/comercial/Comercial.pbip): 3 páginas, 5 tabelas e 11 medidas DAX. |
 | [Indicadores de projetos](projetos/indicadores-projetos/README.md) | Qual é o backlog? Quantas demandas estão atrasadas? Como variam os prazos entre equipes? | [Projetos.pbip](powerbi/projetos/Projetos.pbip): 3 páginas, 3 tabelas e 15 medidas DAX. |
+| [Marketing Analytics](projetos/marketing-analytics/README.md) | Quais canais combinam aquisição e eficiência de mídia? | Pipeline Python, SQL, dados sintéticos, medidas DAX e resultados esperados; PBIP ainda não versionado. |
 | [EquipAnalytics — Big Data](projetos/big-data-equipamentos/README.md) | Como investigar consumo elevado e qualidade de dados de equipamentos? | PySpark, Parquet, Spark SQL, testes e processamento de eventos sintéticos. |
 
 ## Destaque: Fleet Analytics
@@ -26,7 +36,7 @@ Entre os indicadores e padrões implementados estão:
 - normalização de indicadores;
 - Índice, Ranking e Classe de Criticidade.
 
-A versão PBIP é autossuficiente: os dados de demonstração de 2025–2026 são criados pelas consultas Power Query do próprio modelo. O estudo também mantém um gerador Python, SQL analítico e um catálogo DAX mais amplo para evolução do case.
+A versão PBIP é autossuficiente: os dados de demonstração de 2025–2026 são criados pelas consultas Power Query do próprio modelo. O estudo também mantém um gerador Python, SQL analítico e um catálogo DAX mais amplo para evolução do case. Esse catálogo usa diferenças de esquema e regras em relação ao PBIP; as medidas exigem adaptação antes de serem incorporadas.
 
 ## Abrir no Power BI
 
@@ -42,7 +52,7 @@ O Fleet Analytics não exige executar Python para carregar seu cenário padrão,
 
 ## Estado de validação
 
-Os projetos editáveis possuem estrutura PBIP/PBIR, modelos semânticos, consultas e medidas versionadas em texto. A validação completa de abertura, atualização, cálculo DAX e aparência ainda deve ser concluída no Power BI Desktop. Não há `.pbix` versionado nesta entrega.
+Os projetos editáveis possuem estrutura PBIP/PBIR, modelos semânticos, consultas e medidas versionadas em texto. A validação completa de abertura, atualização, cálculo DAX e aparência ainda deve ser concluída no Power BI Desktop. Não há `.pbix` versionado nesta entrega. O Marketing Analytics possui dados, SQL e medidas DAX, mas não possui PBIP versionado. O registro de execução do EquipAnalytics está em [results/ci-100k.json](projetos/big-data-equipamentos/results/ci-100k.json) e se refere ao commit identificado nesse arquivo.
 
 ## Organização
 
@@ -56,7 +66,7 @@ Os projetos editáveis possuem estrutura PBIP/PBIR, modelos semânticos, consult
 | `projetos/marketing-analytics/` | estudo de Marketing Analytics |
 | `pipeline.py` | processamento dos estudos integrados ao pipeline da raiz |
 | `tests/` | testes de regras e transformações dos estudos integrados |
-| `docs/` | documentação geral do portfólio |
+| `docs/` | documentação geral do portfólio e proposta de evolução para Snowflake/IA |
 
 ## Executar o pipeline dos estudos integrados
 
