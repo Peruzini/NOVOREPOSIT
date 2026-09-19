@@ -1,6 +1,6 @@
 # Evolução de BI para consultas por IA no Snowflake
 
-**Status: proposta técnica.** O repositório ainda não contém implantação no Snowflake, agente Cortex executável ou resultados de migração. Este documento define uma evolução do Fleet Analytics para demonstrar revisão de indicadores, equivalência de métricas e consulta por linguagem natural.
+**Status: piloto implementado em código, com execução local.** Consulte [snowflake/fleet](../snowflake/fleet/README.md) para gerar dados, executar 11 testes e preparar os scripts Snowflake/Cortex. A validação no Power BI Desktop, a compilação/execução Snowflake e as respostas do agente ainda estão pendentes. Este documento mantém o roteiro de evolução e os critérios de aceite.
 
 ## Objetivo
 
@@ -23,7 +23,7 @@ Cortex Analyst oferece consultas em linguagem natural sobre dados estruturados p
 
 ## Primeiro ajuste: alinhar o significado dos indicadores
 
-A [documentação do Fleet](../projetos/fleet-dax-advanced/README.md) registra diferenças entre PBIP e catálogo. Antes de transportar cálculos, decidir:
+A [documentação do Fleet](../projetos/fleet-dax-advanced/README.md) registra diferenças entre PBIP e catálogo. As decisões do primeiro piloto estão no [contrato de métricas](../snowflake/fleet/contrato-de-metricas.md). Os pontos que precisam ser explicitados em qualquer migração são:
 
 - se “falha” inclui todos os eventos de manutenção ou apenas eventos corretivos sinalizados;
 - se MTTR considera somente horas corretivas;
@@ -35,7 +35,7 @@ Uma medida DAX dependente de contexto de filtro não deve ser tratada como uma t
 
 ## Perguntas do piloto
 
-Os exemplos abaixo são testes a executar; não contêm respostas já verificadas.
+Os exemplos abaixo orientam a homologação. Há [resultados locais de referência](../snowflake/fleet/evaluation/local-expected.json) para produção, custo, manutenção e comparação mensal; as respostas do Power BI/Snowflake/Cortex ainda precisam ser observadas. Criticidade permanece fora do agente v1.
 
 | Pergunta | Comparação necessária | Critério proposto |
 | --- | --- | --- |
@@ -56,13 +56,13 @@ Para cada execução, registrar pergunta, data, versão da base, filtros, SQL de
 4. Validar as perguntas com o perfil de acesso do usuário final e revisar as respostas.
 5. Publicar capturas reais e um resumo de resultados medidos, incluindo divergências restantes.
 
-## Organização proposta para a implementação futura
+## Organização do piloto
 
-| Caminho a criar quando houver implementação | Conteúdo |
+| Caminho implementado | Conteúdo |
 | --- | --- |
 | `snowflake/fleet/sql/` | DDL, views e consultas de referência |
 | `snowflake/fleet/semantic/` | Definição da camada semântica e regras das métricas |
 | `snowflake/fleet/agent/` | Configuração e instruções do agente |
 | `snowflake/fleet/evaluation/` | Perguntas, resultados esperados e avaliações executadas |
 
-Essas pastas não foram criadas como entrega funcional nesta revisão. A proposta reaproveita o Fleet existente, preservando seus links e deixando uma única fonte de referência para os indicadores.
+As pastas contêm scripts e referências locais. O [contrato de métricas](../snowflake/fleet/contrato-de-metricas.md) define as regras adotadas no piloto; a existência dos scripts não significa implantação concluída. Criticidade e Pareto dependem de uma etapa adicional de equivalência de contexto.

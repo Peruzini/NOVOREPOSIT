@@ -1,0 +1,13 @@
+{
+  "dataset": "fleet-pilot-v1",
+  "rows": 5840,
+  "start": "2025-01-01",
+  "end": "2026-12-31",
+  "pbip_model_sha256": "42cc4104cfd61432d45a8796e197297c605fabf558c99c0898768a2e06b533a4",
+  "csv_sha256": "5bd3e38139e66c9d887a76a7a2aa0c1888a45fa6389b0c87c5b1051ba6a20b66",
+  "local_reference": "Python synthetic generator + SQLite queries",
+  "power_query_executed": false,
+  "dax_executed": false,
+  "snowflake_executed": false,
+  "cortex_executed": false
+}
